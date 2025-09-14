@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - EduVault</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-book-open"></i> EduVault
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="search-results.html" class="active"><i class="fa-solid fa-magnifying-glass"></i> Search</a></li>
+                <li><a href="#">Profile</a></li>
+            </ul>
+            <a href="login.html" class="btn-login">Login</a>
+            <button class="hamburger" id="hamburger">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="search-page-container">
+            <aside class="filter-sidebar">
+                <h4>Filter by Type</h4>
+                <ul class="filter-list">
+                    <li><label><input type="checkbox" checked> Videos</label></li>
+                    <li><label><input type="checkbox" checked> Notes</label></li>
+                    <li><label><input type="checkbox"> Podcasts</label></li>
+                    <li><label><input type="checkbox"> Lectures</label></li>
+                    <li><label><input type="checkbox"> Research Papers</label></li>
+                </ul>
+                <h4>Sort by</h4>
+                <select class="sort-dropdown">
+                    <option>Relevance</option>
+                    <option>Newest</option>
+                    <option>Oldest</option>
+                </select>
+            </aside>
+
+            <section class="results-section">
+                <h1 id="search-results-heading">Search Results for 'Physics'</h1>
+                <div class="results-list">
+                    <div class="result-card">
+                        <span class="result-tag video-tag">Video</span>
+                        <h3>Introduction to Astrophysics</h3>
+                        <p class="result-description">A comprehensive video lecture series by MIT covering the basics of astrophysics, from stellar evolution to cosmology.</p>
+                        <p class="result-source">Source: MIT OpenCourseWare</p>
+                        <a href="#" class="btn-view">View Resource</a>
+                    </div>
+                    <div class="result-card">
+                        <span class="result-tag notes-tag">Notes</span>
+                        <h3>Quantum Mechanics Study Guide</h3>
+                        <p class="result-description">Detailed PDF notes summarizing key concepts in quantum mechanics, including wave-particle duality and the Schrödinger equation.</p>
+                        <p class="result-source">Source: Physics.org</p>
+                        <a href="#" class="btn-view">View Resource</a>
+                    </div>
+                    <div class="result-card">
+                        <span class="result-tag video-tag">Video</span>
+                        <h3>The Elegant Universe</h3>
+                        <p class="result-description">An engaging documentary explaining the fundamentals of string theory and its implications for our understanding of the universe.</p>
+                        <p class="result-source">Source: PBS NOVA</p>
+                        <a href="#" class="btn-view">View Resource</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 EduVault. All rights reserved.</p>
+    </footer>
+    
+    <script src="script.js"></script>
+
+</body>
+</html>

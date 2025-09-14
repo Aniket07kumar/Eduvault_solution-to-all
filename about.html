@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About EduVault</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-book-open"></i> EduVault
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i> Search</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+            <a href="login.html" class="btn-login">Login</a>
+            <button class="hamburger" id="hamburger">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="page-container">
+            <section class="about-section">
+                <h1>About EduVault</h1>
+                <p>EduVault is a comprehensive educational resource platform designed to connect learners with the best educational content across multiple formats.</p>
+                <p>Our mission is to make learning accessible to everyone by aggregating high-quality educational materials from various sources into one searchable platform. Whether you prefer videos, written notes, podcasts, lectures, or academic research papers, EduVault helps you find the perfect resources for your learning style.</p>
+                
+                <h2>Our Vision</h2>
+                <div class="vision-quote">
+                    <p>"To create a world where quality education is accessible to everyone, everywhere, in the format that best suits their individual learning needs."</p>
+                </div>
+
+                <h2>What Makes Us Different</h2>
+                <div class="difference-grid">
+                    <div class="difference-card">
+                        <div class="icon-container color-indigo">
+                            <i class="fa-solid fa-book-open"></i>
+                        </div>
+                        <h3>Diverse Content Formats</h3>
+                        <p>We aggregate content in multiple formats to accommodate different learning preferences and styles.</p>
+                    </div>
+                    <div class="difference-card">
+                        <div class="icon-container color-green">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <h3>Community-Driven</h3>
+                        <p>Our platform incorporates user ratings and reviews to help surface the highest quality educational resources.</p>
+                    </div>
+                    <div class="difference-card">
+                        <div class="icon-container color-purple">
+                            <i class="fa-solid fa-globe"></i>
+                        </div>
+                        <h3>Global Perspective</h3>
+                        <p>We source content from educational institutions and creators worldwide to provide diverse perspectives.</p>
+                    </div>
+                    <div class="difference-card">
+                        <div class="icon-container color-red">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h3>Quality Assurance</h3>
+                        <p>Our team of educators reviews content to ensure accuracy and educational value before it appears on our platform.</p>
+                    </div>
+                </div>
+
+                <h2>Our Team</h2>
+                <div class="team-container">
+                    <div class="team-member">
+                        <img src="https://placehold.co/400x400/E8EAF6/5A67D8?text=Person+1" alt="Team Member 1">
+                    </div>
+                    <div class="team-member">
+                        <img src="https://placehold.co/400x400/E4F8EE/27C26C?text=Person+2" alt="Team Member 2">
+                    </div>
+                    <div class="team-member">
+                        <img src="https://placehold.co/400x400/F4E8FF/A155E7?text=Person+3" alt="Team Member 3">
+                    </div>
+                </div>
+
+                <section class="contact-section">
+                    <h2>Contact Us</h2>
+                    <p>Have questions or feedback? We'd love to hear from you!</p>
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="6" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Send Message</button>
+                    </form>
+                    <div id="success-message" class="success-message">
+                        <h3>Thank you!</h3>
+                        <p>Your message has been sent successfully. We'll get back to you shortly.</p>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2023 EduVault. All rights reserved.</p>
+    </footer>
+    
+    <script src="script.js"></script>
+
+</body>
+</html>

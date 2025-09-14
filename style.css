@@ -1,0 +1,791 @@
+/* General Body & Reset Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff;
+    color: #333;
+}
+
+/* Header and Navigation Bar */
+.main-header {
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 0 5%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    text-decoration: none;
+}
+
+.logo i {
+    color: #5A4FCF;
+    margin-right: 8px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #5A4FCF;
+}
+
+.nav-links i {
+    margin-right: 5px;
+}
+
+.btn-login {
+    background-color: #5A4FCF;
+    color: #fff;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn-login:hover {
+    background-color: #4a40b3;
+}
+
+/* Hero Section */
+.hero-section {
+    background-color: #5A4FCF;
+    color: #fff;
+    padding: 100px 5%;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    max-width: 800px;
+    margin: 0 auto 20px;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    font-weight: 400;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    opacity: 0.9;
+}
+
+.search-bar-container {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-bar-container input {
+    width: 100%;
+    padding: 18px 50px 18px 25px;
+    border-radius: 50px;
+    border: none;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.search-bar-container input:focus {
+    outline: 2px solid #a89fff;
+}
+
+.search-bar-container .search-icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: #777;
+    cursor: pointer;
+}
+
+/* Features Section */
+.features-section {
+    padding: 80px 5%;
+    text-align: center;
+}
+
+.features-section h2 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.features-section > p { /* Target direct child 'p' */
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+
+/* ## START: NEW STYLES ## */
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 60px;
+    text-align: left;
+}
+
+.feature-card {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #e9e9e9;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.feature-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.feature-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.icon-container {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+/* Icon Colors */
+.color-red { background-color: #ffeeee; color: #ff5c5c; }
+.color-blue { background-color: #e6f3ff; color: #3b9dff; }
+.color-purple { background-color: #f4e8ff; color: #a155e7; }
+.color-green { background-color: #e4f8ee; color: #27c26c; }
+.color-yellow { background-color: #fff8e1; color: #ffc42e; }
+.color-indigo { background-color: #e8eaf6; color: #5a67d8; }
+
+/* ## END: NEW STYLES ## */
+
+/* Append this to your existing style.css file */
+
+/* ## START: NEW STYLES for About Page ## */
+
+/* Active Navigation Link */
+.nav-links a.active {
+    color: #5A4FCF;
+    font-weight: 600;
+}
+
+/* General Page Container for Centering Content */
+.page-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 20px;
+}
+
+.about-section h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.about-section h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.about-section p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.vision-quote {
+    background-color: #f8f9fa;
+    border-left: 4px solid #5A4FCF;
+    padding: 25px 30px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.vision-quote p {
+    font-style: italic;
+    color: #333;
+    margin-bottom: 0; /* Remove bottom margin for the paragraph inside the quote */
+}
+
+/* Footer (Adding it here if you reverted the last step) */
+footer.main-footer {
+    padding: 30px 5%;
+    text-align: center;
+    border-top: 1px solid #e0e0e0;
+    background-color: #fff;
+}
+
+footer.main-footer p {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* ## END: NEW STYLES ## */
+
+
+/* ## START: NEW STYLES for About Page Additions ## */
+
+/* Grid for "What Makes Us Different" Section */
+.difference-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Creates a 2-column grid */
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.difference-card {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #e9e9e9;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    text-align: left; /* Aligns text to the left inside cards */
+}
+
+.difference-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.difference-card p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 1rem; /* Slightly smaller text for cards */
+    margin-bottom: 0;
+}
+
+/* "Our Team" Section */
+.team-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates a 3-column grid */
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.team-member img {
+    width: 100%;
+    border-radius: 12px; /* Rounded corners for the images */
+    aspect-ratio: 1 / 1; /* Makes the images perfectly square */
+    object-fit: cover; /* Prevents images from stretching */
+}
+
+/* ## END: NEW STYLES ## */
+
+
+/* ## START: RESPONSIVE MEDIA QUERIES ## */
+
+/* -- For Tablets (screens smaller than 992px) -- */
+@media (max-width: 992px) {
+    .navbar {
+        padding: 0 5%; /* Adjust padding for nav */
+    }
+
+    .nav-links {
+        gap: 25px; /* Reduce space between nav links */
+    }
+
+    /* Change 3-column grids to 2-column */
+    .features-grid,
+    .team-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Change 2-column grid to 1-column */
+    .difference-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem; /* Slightly smaller main heading */
+    }
+}
+
+
+/* -- For Mobile Phones (screens smaller than 768px) -- */
+@media (max-width: 768px) {
+    /* HIDE NAVIGATION LINKS FOR MOBILE */
+    /* Note: A hamburger menu button requires JavaScript to function */
+    .nav-links,
+    .btn-login {
+        display: none;
+    }
+
+    /* Change all grids to a single column */
+    .features-grid,
+    .difference-grid,
+    .team-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* Adjust padding for all main sections */
+    .hero-section,
+    .features-section,
+    .page-container {
+        padding: 60px 5%;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem; /* Smaller main heading for mobile */
+    }
+
+    .features-section h2,
+    .about-section h1,
+    .about-section h2 {
+        font-size: 1.8rem; /* Smaller subheadings for mobile */
+    }
+}
+
+/* ## END: RESPONSIVE MEDIA QUERIES ## */
+
+
+
+/* ## START: HAMBURGER MENU STYLES ## */
+
+/* Hamburger Button */
+.hamburger {
+    display: none; /* Hidden by default on desktop */
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+}
+
+/* Mobile Navigation Menu */
+.nav-links.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 80px; /* Position below the header */
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    gap: 20px;
+    z-index: 1000;
+}
+
+/* Update Media Query for Mobile */
+@media (max-width: 768px) {
+    .btn-login {
+        display: none; /* Ensure login button is also hidden */
+    }
+
+    .hamburger {
+        display: block; /* Show the hamburger button on mobile */
+    }
+
+    .nav-links {
+        display: none; /* Keep the original links hidden */
+    }
+}
+/* ## END: HAMBURGER MENU STYLES ## */
+
+
+
+/* ## START: CONTACT FORM STYLES ## */
+
+.contact-section {
+    margin-top: 80px;
+    margin-left: 150px;
+    margin-right: 100px;
+    text-align: left;
+}
+
+.contact-section h2 {
+    text-align: left;
+}
+
+.contact-section p {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.contact-form {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid #e9e9e9;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #5A4FCF;
+}
+
+.form-group textarea {
+    resize: vertical; /* Allows user to resize the textarea vertically */
+}
+
+.btn-submit {
+    background-color: #5A4FCF;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #4a40b3;
+}
+
+/* Make the contact form responsive for mobile */
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr; /* Stack Name and Email fields on mobile */
+    }
+}
+
+/* ## END: CONTACT FORM STYLES ## */
+
+
+/* ## START: SUCCESS MESSAGE STYLES ## */
+
+.success-message {
+    display: none; /* Hidden by default */
+    padding: 40px;
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.success-message h3 {
+    font-size: 1.8rem;
+    color: #27c26c; /* Green color for success */
+    margin-bottom: 10px;
+}
+
+/* ## END: SUCCESS MESSAGE STYLES ## */
+
+
+
+/* ## START: SEARCH RESULTS PAGE STYLES ## */
+
+.search-page-container {
+    display: flex;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+/* Filter Sidebar */
+.filter-sidebar {
+    flex: 0 0 250px; /* Sidebar width */
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    height: fit-content;
+}
+
+.filter-sidebar h4 {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.filter-list {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.filter-list li {
+    margin-bottom: 10px;
+}
+
+.filter-list label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.sort-dropdown {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+/* Results Section */
+.results-section {
+    flex-grow: 1;
+}
+
+.results-section h1 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.result-card {
+    border: 1px solid #e9e9e9;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.result-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border-radius: 5px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.video-tag { background-color: #ff5c5c; }
+.notes-tag { background-color: #3b9dff; }
+
+.result-card h3 {
+    margin-bottom: 8px;
+}
+
+.result-description {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.result-source {
+    font-style: italic;
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.btn-view {
+    background-color: #5A4FCF;
+    color: #fff;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-view:hover {
+    background-color: #4a40b3;
+}
+
+/* Responsive adjustments for search page */
+@media (max-width: 768px) {
+    .search-page-container {
+        flex-direction: column;
+    }
+    .filter-sidebar {
+        flex: 0 0 auto; /* Reset flex property */
+    }
+}
+
+/* ## END: SEARCH RESULTS PAGE STYLES ## */
+
+
+
+/* ## START: LOGIN PAGE STYLES ## */
+
+/* Center the login form on the page */
+.login-page-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 80px); /* Full height minus the header */
+    background-color: #f8f9fa;
+}
+
+.login-container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+}
+
+.login-form .form-group {
+    text-align: left;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 0.9rem;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.forgot-password,
+.signup-link a {
+    color: #5A4FCF;
+    text-decoration: none;
+}
+
+.forgot-password:hover,
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+.login-form .btn-submit {
+    width: 100%; /* Make login button full-width */
+}
+
+.signup-link {
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+/* ## END: LOGIN PAGE STYLES ## */
+
+
+
+/* ## START: PROFILE PAGE STYLES ## */
+
+.profile-card {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 50px auto;
+}
+
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 4px solid #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-name {
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.profile-email {
+    color: #888;
+    margin-bottom: 25px;
+}
+
+.profile-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-logout {
+    background-color: #f1f1f1;
+    color: #333;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn-logout:hover {
+    background-color: #e0e0e0;
+}
+
+.saved-resources {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.saved-resources h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* ## END: PROFILE PAGE STYLES ## */
