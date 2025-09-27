@@ -95,3 +95,54 @@ if (searchResultsHeading) {
         searchResultsHeading.textContent = `Search Results for '${query}'`;
     }
 }
+
+// Add this new code to the bottom of script.js
+
+// --- Sign-up Success Pop-up and Redirect ---
+const signUpForm = document.querySelector('.login-form'); // Assuming sign-up form has this class
+const successPopup = document.getElementById('success-popup');
+
+// Check if we are on the sign-up page by looking for the form
+if (signUpForm && document.title.includes('Sign Up')) {
+    signUpForm.addEventListener('submit', (e) => {
+        e.preventDefault(); // Stop the form from reloading the page
+
+        // In a real application, you would send the form data to your backend here
+        // For example: await fetch('/api/signup', { ... });
+
+        // Show the success pop-up
+        if (successPopup) {
+            successPopup.classList.add('show');
+        }
+
+        // Wait for 2 seconds before redirecting
+        setTimeout(() => {
+            window.location.href = 'index.html'; // Redirect to the profile page
+        }, 2000); // 2000 milliseconds = 2 seconds
+    });
+}
+
+// Add this new code to the bottom of script.js
+
+// --- Login Form Redirect ---
+// --- Login Form Redirect ---
+const loginForm = document.getElementById('login-form');
+
+if (loginForm) {
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault(); // Stop the form from reloading
+
+        // Get the pop-up element from the login page
+        const successPopup = document.getElementById('success-popup');
+
+        // Show the pop-up
+        if (successPopup) {
+            successPopup.classList.add('show');
+        }
+
+        // Wait for 2 seconds before redirecting
+        setTimeout(() => {
+            window.location.href = 'index.html'; // Redirect to the home page
+        }, 2000); // 2000 milliseconds = 2 seconds
+    });
+}
