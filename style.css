@@ -2,12 +2,15 @@
 
 :root {
     --primary-color: #5A4FCF;
+    --accent-color: #27C26C; /* <--- NEW ACCENT COLOR */
     --background-color: #fff;
     --card-background: #fff;
     --text-color: #333;
     --subtle-text-color: #666;
     --border-color: #e9e9e9;
     --light-gray-bg: #f8f9fa;
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06); /* <--- NEW SHADOW */
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12); /* <--- NEW SHADOW */
 }
 
 [data-theme='dark'] {
@@ -26,15 +29,17 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #fff;
-    color: #333;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease-in; /* Added opacity transition */
 }
 
 /* Header and Navigation Bar */
 .main-header {
-    background-color: #fff;
-    border-bottom: 1px solid #e0e0e0;
+    background-color: var(--card-background);
+    border-bottom: 1px solid var(--border-color);
     padding: 0 5%;
+    transition: background-color 0.3s ease, border-bottom 0.3s ease;
 }
 
 .navbar {
@@ -47,12 +52,12 @@ body {
 .logo {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #333;
+    color: var(--text-color);
     text-decoration: none;
 }
 
 .logo i {
-    color: #5A4FCF;
+    color: var(--primary-color);
     margin-right: 8px;
 }
 
@@ -64,40 +69,132 @@ body {
 
 .nav-links a {
     text-decoration: none;
-    color: #555;
+    color: var(--subtle-text-color);
     font-weight: 500;
-    transition: color 0.3s ease;
+
+    /* ## START: UPDATED NAV LINK FX ## */
+    padding: 8px 16px; /* Padding for the "pill" */
+    border-radius: 50px; /* Rounded corners */
+    transition: all 0.3s ease; /* Smooth transition for color and background */
+    position: relative; /* Added for the underline */
+    /* ## END: UPDATED NAV LINK FX ## */
 }
 
-.nav-links a:hover {
-    color: #5A4FCF;
+/* ## START: ADDED UNDERLINE ## */
+/* This creates the underline */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; /* Position it just below the pill */
+    left: 15%; /* Start underline inset */
+    width: 70%; /* Underline is 70% of pill width */
+    height: 2px;
+    background-color: var(--primary-color);
+    transform: scaleX(0); /* Hidden by default */
+    transform-origin: center;
+    transition: transform 0.3s ease-out;
 }
+/* ## END: ADDED UNDERLINE ## */
+
+
+.nav-links a:hover {
+    /* ## START: UPDATED NAV LINK FX ## */
+    background-color: #fff8e1; /* Using the light yellow from your icon styles */
+    color: #ffc42e;      /* Using the dark yellow from your icon styles */
+    /* ## END: UPDATED NAV LINK FX ## */
+}
+
 
 .nav-links i {
     margin-right: 5px;
 }
 
+/* ## START: THEME TOGGLE STYLES ## */
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    color: var(--subtle-text-color);
+    cursor: pointer;
+    transition: color 0.3s ease;
+    margin-right: 20px;
+    padding: 5px;
+}
+
+.theme-toggle:hover {
+    color: var(--primary-color);
+}
+
+/* By default, show the moon (light mode) and hide the sun */
+.theme-toggle .fa-sun {
+    display: none;
+}
+
+/* In dark mode, hide the moon and show the sun */
+[data-theme='dark'] .theme-toggle .fa-moon {
+    display: none;
+}
+
+[data-theme='dark'] .theme-toggle .fa-sun {
+    display: block;
+}
+/* ## END: THEME TOGGLE STYLES ## */
+
+
 .btn-login {
-    background-color: #5A4FCF;
+    background-color: var(--primary-color);
     color: #fff;
     padding: 10px 24px;
     border: none;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 500;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.1s ease; /* Added transform */
 }
 
 .btn-login:hover {
     background-color: #4a40b3;
 }
 
+/* ## START: PRESSABLE BUTTONS ## */
+.btn-login:active,
+.btn-submit:active,
+.btn-view:active,
+.btn-logout:active {
+    transform: scale(0.98); /* Slightly shrink button when pressed */
+}
+/* ## END: PRESSABLE BUTTONS ## */
+
+
 /* Hero Section */
 .hero-section {
-    background-color: #5A4FCF;
+    background-color: var(--primary-color);
+   background-image: linear-gradient(rgba(90, 79, 207, 0.7), rgba(90, 79, 207, 0.5)), url('images/home-bg.png'); /* <-- ADDED BACKGROUND IMAGE AND OVERLAY */
+    background-size: cover; /* Ensures the image covers the entire section */
+    background-position: center; /* Centers the image */
+    background-attachment: fixed; /* Makes the background fixed while scrolling */
+    position: relative;
+    overflow: hidden;
     color: #fff;
     padding: 100px 5%;
     text-align: center;
+}
+
+/* ## START: PARTICLE CONTAINER STYLE ## */
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Behind the content */
+}
+/* ## END: PARTICLE CONTAINER STYLE ## */
+
+
+.hero-content {
+    position: relative;
+    z-index: 2; /* Sits above particles */
 }
 
 .hero-content h1 {
@@ -128,6 +225,9 @@ body {
     border: none;
     font-size: 1rem;
     font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15); /* <--- ADDED SHADOW */
 }
 
 .search-bar-container input:focus {
@@ -146,6 +246,41 @@ body {
     cursor: pointer;
 }
 
+/* ## START: AUTO-SUGGESTION STYLES ## */
+.suggestions-list {
+    position: absolute;
+    top: calc(100% + 5px); /* Position below the search bar */
+    left: 0;
+    right: 0;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+    max-height: 200px; /* Limit height */
+    overflow-y: auto; /* Allow scrolling */
+    z-index: 10; /* Ensure it's above other hero content */
+    display: none; /* Hidden by default */
+}
+
+.suggestions-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.suggestions-list li {
+    padding: 10px 20px;
+    cursor: pointer;
+    color: var(--text-color);
+    text-align: left;
+}
+
+.suggestions-list li:hover {
+    background-color: var(--light-gray-bg);
+}
+/* ## END: AUTO-SUGGESTION STYLES ## */
+
+
 /* Features Section */
 .features-section {
     padding: 80px 5%;
@@ -156,11 +291,12 @@ body {
     font-size: 2.2rem;
     font-weight: 600;
     margin-bottom: 15px;
+    color: var(--text-color); /* Added this */
 }
 
 .features-section > p { /* Target direct child 'p' */
     font-size: 1.1rem;
-    color: #666;
+    color: var(--subtle-text-color); /* Changed from #666 */
     max-width: 600px;
     margin: 0 auto;
 }
@@ -177,28 +313,37 @@ body {
 }
 
 .feature-card {
-    
-    background-color: #fff;
+    background-color: var(--card-background);
     padding: 30px;
     border-radius: 12px;
-    border: 1px solid #e9e9e9;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease; 
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    /* Corrected: Combine hover transition with reveal transition */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease;
 }
 
 .feature-card:hover {
+    /* Keep hover transform */
     transform: translateY(-5px) scale(1.03);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-lg);
 }
+
+
+/* ## START: ANIMATE FEATURE ICON ## */
+.feature-card:hover .icon-container i {
+    transform: rotate(15deg) scale(1.1);
+}
+/* ## END: ANIMATE FEATURE ICON ## */
+
 
 .feature-card h3 {
     font-size: 1.25rem;
     margin-bottom: 10px;
-    color: #333;
+    color: var(--text-color); /* Changed from #333 */
 }
 
 .feature-card p {
-    color: #666;
+    color: var(--subtle-text-color); /* Changed from #666 */
     line-height: 1.6;
 }
 
@@ -212,6 +357,12 @@ body {
     margin-bottom: 20px;
     font-size: 1.5rem;
 }
+
+/* ## START: ANIMATE FEATURE ICON ## */
+.icon-container i {
+    transition: transform 0.3s ease-out; /* Add smooth transition to icon */
+}
+/* ## END: ANIMATE FEATURE ICON ## */
 
 /* Icon Colors */
 .color-red { background-color: #ffeeee; color: #ff5c5c; }
@@ -229,9 +380,20 @@ body {
 
 /* Active Navigation Link */
 .nav-links a.active {
-    color: #5A4FCF;
+    /* ## START: UPDATED NAV LINK FX ## */
+    background-color: #fff8e1; /* Light yellow pill */
+    color: #ffc42e;      /* Dark yellow text */
     font-weight: 600;
+    /* ## END: UPDATED NAV LINK FX ## */
 }
+
+/* ## START: NAV LINK FX ## */
+/* This shows the underline on the active link */
+.nav-links a.active::after {
+    transform: scaleX(1); /* Show underline */
+}
+/* ## END: NAV LINK FX ## */
+
 
 /* General Page Container for Centering Content */
 .page-container {
@@ -244,6 +406,7 @@ body {
     font-size: 2.8rem;
     font-weight: 700;
     margin-bottom: 25px;
+    color: var(--text-color); /* Added this */
 }
 
 .about-section h2 {
@@ -251,18 +414,19 @@ body {
     font-weight: 600;
     margin-top: 50px;
     margin-bottom: 20px;
+    color: var(--text-color); /* Added this */
 }
 
 .about-section p {
     font-size: 1.1rem;
-    color: #555;
+    color: var(--subtle-text-color); /* Changed from #555 */
     line-height: 1.8;
     margin-bottom: 20px;
 }
 
 .vision-quote {
-    background-color: #f8f9fa;
-    border-left: 4px solid #5A4FCF;
+    background-color: var(--light-gray-bg); /* Changed from #f8f9fa */
+    border-left: 4px solid var(--primary-color);
     padding: 25px 30px;
     border-radius: 8px;
     margin-top: 10px;
@@ -270,7 +434,7 @@ body {
 
 .vision-quote p {
     font-style: italic;
-    color: #333;
+    color: var(--text-color); /* Changed from #333 */
     margin-bottom: 0; /* Remove bottom margin for the paragraph inside the quote */
 }
 
@@ -278,8 +442,8 @@ body {
 footer.main-footer {
     padding: 30px 5%;
     text-align: center;
-    border-top: 1px solid #e0e0e0;
-    background-color: #fff;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--light-gray-bg); /* <--- UPDATED COLOR */
 }
 
 footer.main-footer p {
@@ -301,22 +465,22 @@ footer.main-footer p {
 }
 
 .difference-card {
-    background-color: #fff;
+    background-color: var(--card-background); /* Changed from #fff */
     padding: 30px;
     border-radius: 12px;
-    border: 1px solid #e9e9e9;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color); /* Changed from #e9e9e9 */
+    box-shadow: var(--shadow-md); /* <--- UPDATED SHADOW */
     text-align: left; /* Aligns text to the left inside cards */
 }
 
 .difference-card h3 {
     font-size: 1.25rem;
     margin-bottom: 10px;
-    color: #333;
+    color: var(--text-color); /* Changed from #333 */
 }
 
 .difference-card p {
-    color: #666;
+    color: var(--subtle-text-color); /* Changed from #666 */
     line-height: 1.6;
     font-size: 1rem; /* Slightly smaller text for cards */
     margin-bottom: 0;
@@ -374,7 +538,8 @@ footer.main-footer p {
     /* HIDE NAVIGATION LINKS FOR MOBILE */
     /* Note: A hamburger menu button requires JavaScript to function */
     .nav-links,
-    .btn-login {
+    .btn-login,
+    .theme-toggle { /* Also hide theme toggle from row */
         display: none;
     }
 
@@ -391,7 +556,7 @@ footer.main-footer p {
     .page-container {
         padding: 60px 5%;
     }
-    
+
     .hero-content h1 {
         font-size: 2rem; /* Smaller main heading for mobile */
     }
@@ -401,6 +566,8 @@ footer.main-footer p {
     .about-section h2 {
         font-size: 1.8rem; /* Smaller subheadings for mobile */
     }
+
+    /* ## REMOVED: VAULT MOBILE STYLES ## */
 }
 
 /* ## END: RESPONSIVE MEDIA QUERIES ## */
@@ -415,7 +582,7 @@ footer.main-footer p {
     font-size: 1.5rem;
     background: none;
     border: none;
-    color: #333;
+    color: var(--text-color); /* Changed from #333 */
     cursor: pointer;
 }
 
@@ -427,7 +594,7 @@ footer.main-footer p {
     top: 80px; /* Position below the header */
     left: 0;
     width: 100%;
-    background-color: #fff;
+    background-color: var(--card-background); /* Changed from #fff */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 20px;
     gap: 20px;
@@ -446,6 +613,13 @@ footer.main-footer p {
 
     .nav-links {
         display: none; /* Keep the original links hidden */
+    }
+
+    /* Re-display theme toggle inside active mobile menu */
+    .nav-links.active .theme-toggle {
+        display: block;
+        margin-right: 0;
+        text-align: left;
     }
 }
 /* ## END: HAMBURGER MENU STYLES ## */
@@ -471,11 +645,11 @@ footer.main-footer p {
 }
 
 .contact-form {
-    background-color: #fff;
+    background-color: var(--card-background); /* Changed from #fff */
     padding: 40px;
     border-radius: 12px;
-    border: 1px solid #e9e9e9;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color); /* Changed from #e9e9e9 */
+    box-shadow: var(--shadow-md); /* <--- UPDATED SHADOW */
 }
 
 .form-row {
@@ -492,7 +666,7 @@ footer.main-footer p {
     display: block;
     margin-bottom: 8px;
     font-weight: 500;
-    color: #555;
+    color: var(--subtle-text-color); /* Changed from #555 */
 }
 
 .form-group input,
@@ -503,12 +677,15 @@ footer.main-footer p {
     border-radius: 8px;
     font-size: 1rem;
     font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color); /* Added */
+    color: var(--text-color); /* Added */
+    border-color: var(--border-color); /* Added */
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #5A4FCF;
+    border-color: var(--primary-color);
 }
 
 .form-group textarea {
@@ -516,7 +693,7 @@ footer.main-footer p {
 }
 
 .btn-submit {
-    background-color: #5A4FCF;
+    background-color: var(--primary-color);
     color: #fff;
     padding: 12px 24px;
     border: none;
@@ -524,7 +701,7 @@ footer.main-footer p {
     font-weight: 500;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.1s ease; /* Added transform */
 }
 
 .btn-submit:hover {
@@ -546,15 +723,15 @@ footer.main-footer p {
 .success-message {
     display: none; /* Hidden by default */
     padding: 40px;
-    background-color: #f8f9fa;
-    border: 1px solid #e0e0e0;
+    background-color: var(--light-gray-bg); /* Changed from #f8f9fa */
+    border: 1px solid var(--border-color); /* Changed from #e0e0e0 */
     border-radius: 12px;
     text-align: center;
 }
 
 .success-message h3 {
     font-size: 1.8rem;
-    color: #27c26c; /* Green color for success */
+    color: var(--accent-color); /* <--- UPDATED COLOR */
     margin-bottom: 10px;
 }
 
@@ -575,7 +752,7 @@ footer.main-footer p {
 /* Filter Sidebar */
 .filter-sidebar {
     flex: 0 0 250px; /* Sidebar width */
-    background-color: #f8f9fa;
+    background-color: var(--light-gray-bg); /* Changed from #f8f9fa */
     padding: 20px;
     border-radius: 8px;
     height: fit-content;
@@ -584,6 +761,7 @@ footer.main-footer p {
 .filter-sidebar h4 {
     margin-bottom: 15px;
     font-size: 1.1rem;
+    color: var(--text-color); /* Added */
 }
 
 .filter-list {
@@ -600,13 +778,16 @@ footer.main-footer p {
     align-items: center;
     gap: 8px;
     cursor: pointer;
+    color: var(--subtle-text-color); /* Added */
 }
 
 .sort-dropdown {
     width: 100%;
     padding: 8px;
     border-radius: 5px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color); /* Changed */
+    background-color: var(--card-background); /* Added */
+    color: var(--text-color); /* Added */
 }
 
 /* Results Section */
@@ -617,14 +798,32 @@ footer.main-footer p {
 .results-section h1 {
     font-size: 2rem;
     margin-bottom: 30px;
+    color: var(--text-color); /* Added */
 }
 
 .result-card {
-    border: 1px solid #e9e9e9;
+    border: 1px solid var(--border-color); /* Changed */
+    background-color: var(--card-background); /* Added */
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 20px;
+    /* ## START: ADDED TRANSITION FOR FILTERING ## */
+    transition: all 0.4s ease-out;
+    overflow: hidden; /* Prevent content spill during animation */
+    /* ## END: ADDED TRANSITION FOR FILTERING ## */
 }
+
+/* ## START: CARD HIDDEN STATE ## */
+.result-card.card-hidden {
+    opacity: 0;
+    transform: scale(0.95);
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-width: 0; /* Optional: Hide border when hidden */
+}
+/* ## END: CARD HIDDEN STATE ## */
 
 .result-tag {
     display: inline-block;
@@ -634,17 +833,31 @@ footer.main-footer p {
     border-radius: 5px;
     color: #fff;
     margin-bottom: 10px;
+    transition: filter 0.3s ease; /* Added for hover */
 }
+
+/* ## START: INTERACTIVE RESULT TAGS ## */
+.result-card:hover .result-tag {
+    filter: brightness(1.2); /* Make tag brighter on card hover */
+}
+/* ## END: INTERACTIVE RESULT TAGS ## */
 
 .video-tag { background-color: #ff5c5c; }
 .notes-tag { background-color: #3b9dff; }
+/* ## START: NEW TAG COLORS ## */
+.podcast-tag { background-color: #a155e7; } /* Purple */
+.lecture-tag { background-color: #27c26c; } /* Green */
+.paper-tag { background-color: #ffc42e; }   /* Yellow */
+/* ## END: NEW TAG COLORS ## */
+
 
 .result-card h3 {
     margin-bottom: 8px;
+    color: var(--text-color); /* Added */
 }
 
 .result-description {
-    color: #666;
+    color: var(--subtle-text-color); /* Changed */
     margin-bottom: 15px;
 }
 
@@ -656,16 +869,16 @@ footer.main-footer p {
 }
 
 .btn-view {
-    background-color: #5A4FCF;
+    background-color: var(--accent-color); /* <--- UPDATED COLOR */
     color: #fff;
     padding: 8px 16px;
     text-decoration: none;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.1s ease; /* Added transform */
 }
 
 .btn-view:hover {
-    background-color: #4a40b3;
+    background-color: #209a56; /* <--- UPDATED HOVER COLOR (darker green) */
 }
 
 /* Responsive adjustments for search page */
@@ -690,23 +903,36 @@ footer.main-footer p {
     align-items: center;
     justify-content: center;
     min-height: calc(100vh - 80px); /* Full height minus the header */
-    background-color: #f8f9fa;
+    /* UPDATED BACKGROUND */
+    background-color: var(--primary-color);
+    background-image: linear-gradient(to top, rgba(90, 79, 207, 0.7), rgba(90, 79, 207, 0.5)), url('login-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 40px 0;
 }
 
+
+/* ## REMOVED: NEW VAULT STYLES ## */
+
+
+/* This is the new login box style, replacing the vault styles */
 .login-container {
-    background-color: #fff;
+    background-color: var(--card-background);
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-lg);
     width: 100%;
     max-width: 400px;
     text-align: center;
+    margin: 0 20px; /* Prevents touching edges on mobile */
 }
 
 .login-container h2 {
     margin-bottom: 25px;
     font-size: 1.8rem;
+    color: var(--text-color);
 }
+
 
 .login-form .form-group {
     text-align: left;
@@ -725,11 +951,12 @@ footer.main-footer p {
     align-items: center;
     gap: 5px;
     cursor: pointer;
+    color: var(--subtle-text-color); /* Added */
 }
 
 .forgot-password,
 .signup-link a {
-    color: #5A4FCF;
+    color: var(--primary-color);
     text-decoration: none;
 }
 
@@ -745,6 +972,7 @@ footer.main-footer p {
 .signup-link {
     margin-top: 20px;
     font-size: 0.9rem;
+    color: var(--subtle-text-color); /* Added */
 }
 
 /* ## END: LOGIN PAGE STYLES ## */
@@ -754,10 +982,10 @@ footer.main-footer p {
 /* ## START: PROFILE PAGE STYLES ## */
 
 .profile-card {
-    background-color: #fff;
+    background-color: var(--card-background); /* Changed */
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow-lg); /* <--- UPDATED SHADOW */
     text-align: center;
     max-width: 600px;
     margin: 0 auto 50px auto;
@@ -776,6 +1004,7 @@ footer.main-footer p {
 .profile-name {
     font-size: 2rem;
     margin-bottom: 5px;
+    color: var(--text-color); /* Added */
 }
 
 .profile-email {
@@ -783,6 +1012,57 @@ footer.main-footer p {
     margin-bottom: 25px;
 }
 
+/* ... (Keep existing CSS above) ... */
+
+/* ## START: PROFILE PAGE STYLES ## */
+
+.profile-card {
+    /* ... existing styles ... */
+    margin: 0 auto 50px auto;
+}
+
+
+.profile-email {
+    color: #888;
+    margin-bottom: 25px; /* Keep margin */
+}
+
+/* ## START: ADDED PROFILE STATS STYLES ## */
+.profile-stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Space between stat items */
+    margin-bottom: 30px; /* Space below stats, before actions */
+    padding: 15px 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--subtle-text-color);
+    margin-top: 2px;
+}
+/* ## END: ADDED PROFILE STATS STYLES ## */
+
+
+/*.profile-actions {  */
+    /* ... existing styles ... */
+/*}*/
+
+/* ... (Rest of profile and other styles) ... */
 .profile-actions {
     display: flex;
     justify-content: center;
@@ -790,18 +1070,22 @@ footer.main-footer p {
 }
 
 .btn-logout {
-    background-color: #f1f1f1;
-    color: #333;
+    background-color: var(--light-gray-bg); /* Changed */
+    color: var(--text-color); /* Changed */
     padding: 12px 24px;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 500;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.1s ease; /* Added transform */
 }
 
 .btn-logout:hover {
     background-color: #e0e0e0;
 }
+[data-theme='dark'] .btn-logout:hover {
+    background-color: #333; /* Dark mode hover for logout */
+}
+
 
 .saved-resources {
     max-width: 900px;
@@ -820,12 +1104,10 @@ footer.main-footer p {
 /* ## START: ABOUT PAGE BACKGROUND STYLE ## */
 
 .about-page {
-    background-color: #f0f4f8; /* A light, clean bluish-gray */
+    background-color: var(--light-gray-bg); /* Changed */
 }
 
 /* ## END: ABOUT PAGE BACKGROUND STYLE ## */
-
-
 
 
 /* ## START: PROFILE DASHBOARD STYLES ## */
@@ -837,7 +1119,7 @@ footer.main-footer p {
 
 .dashboard-tabs {
     display: flex;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--border-color); /* Changed */
     margin-bottom: 30px;
 }
 
@@ -854,9 +1136,17 @@ footer.main-footer p {
     border-bottom: 3px solid transparent;
 }
 
+/* ## START: PROFILE TAB ICON STYLES ## */
+.tab-btn i {
+    margin-right: 8px;
+    font-size: 0.9em; /* Make icon slightly smaller than text */
+}
+/* ## END: PROFILE TAB ICON STYLES ## */
+
+
 .tab-btn.active {
-    color: #5A4FCF;
-    border-bottom: 3px solid #5A4FCF;
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
 }
 
 .tab-content {
@@ -871,7 +1161,49 @@ footer.main-footer p {
     font-size: 1.8rem;
     margin-bottom: 20px;
     text-align: left;
+    color: var(--text-color); /* Added */
 }
+
+/* ## START: VISUAL RESOURCE CARD STYLES (PROFILE) ## */
+.profile-results-list .result-card { /* Target cards specifically in profile */
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    gap: 20px;
+}
+
+/*.profile-result-card { */
+    /* Inherits base .result-card styles */
+    /* Add specific overrides if needed */
+/*} */ 
+
+.result-thumbnail {
+    flex-shrink: 0; /* Prevent image from shrinking */
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    background-color: var(--light-gray-bg); /* Placeholder background */
+}
+
+.result-details {
+    flex-grow: 1; /* Allow details section to take remaining space */
+}
+
+/* Adjust spacing within the details section */
+.result-details h3 {
+    margin-bottom: 4px; /* Less space below heading */
+}
+
+.result-details .result-source {
+    margin-bottom: 10px; /* Less space below source */
+}
+
+.result-details .btn-view {
+    padding: 6px 12px; /* Slightly smaller button */
+    font-size: 0.9rem;
+}
+/* ## END: VISUAL RESOURCE CARD STYLES (PROFILE) ## */
+
 
 /* ## END: PROFILE DASHBOARD STYLES ## */
 
@@ -914,7 +1246,7 @@ footer.main-footer p {
 
 .popup-content i {
     font-size: 3rem;
-    color: #27c26c;
+    color: var(--accent-color); /* <--- UPDATED COLOR */
     margin-bottom: 15px;
 }
 
@@ -927,3 +1259,40 @@ footer.main-footer p {
 }
 
 /* ## END: SUCCESS POP-UP STYLES ## */
+
+
+/* ## START: PAGE TRANSITION FX ## */
+body.fade-in {
+    opacity: 0; /* Start invisible */
+    animation: fadeInAnimation 0.5s ease-out forwards; /* Apply animation */
+}
+
+@keyframes fadeInAnimation {
+    from {
+        opacity: 0;
+        /* Optional: Add a slight upward movement */
+        /* transform: translateY(10px); */
+    }
+    to {
+        opacity: 1;
+        /* Optional: Return to original position */
+        /* transform: translateY(0); */
+    }
+}
+/* ## END: PAGE TRANSITION FX ## */
+
+
+/* ## START: REVEAL ON SCROLL FX ## */
+.reveal-on-scroll {
+    opacity: 0;           /* Start invisible */
+    transform: translateY(30px); /* Start slightly lower */
+    /* Ensure reveal transition includes transform */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform; /* Optimize animation performance */
+}
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;           /* Fade in */
+    transform: translateY(0);  /* Move up to original position */
+}
+/* ## END: REVEAL ON SCROLL FX ## */
