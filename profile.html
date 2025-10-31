@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile - EduSearch</title>
+    <title>My Profile - EduVault</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-<body>
+<body class="fade-in">
 
     <header class="main-header">
         <nav class="navbar">
             <a href="index.html" class="logo">
-                <i class="fa-solid fa-book-open"></i> EduSearch
+                <i class="fa-solid fa-book-open"></i> EduVault
             </a>
             <ul class="nav-links" id="nav-links">
                 <li><a href="index.html">Home</a></li>
@@ -23,6 +23,12 @@
                 <li><a href="search-results.html"><i class="fa-solid fa-magnifying-glass"></i> Search</a></li>
                 <li><a href="profile.html" class="active">Profile</a></li>
             </ul>
+
+            <button class="theme-toggle" id="theme-toggle" title="Toggle dark/light mode">
+                <i class="fa-solid fa-moon"></i>
+                <i class="fa-solid fa-sun"></i>
+            </button>
+
             <a href="login.html" class="btn-login">Login</a>
             <button class="hamburger" id="hamburger">
                 <i class="fa-solid fa-bars"></i>
@@ -35,6 +41,21 @@
             <img src="https://placehold.co/150x150/E8EAF6/5A67D8?text=AVATAR" alt="User Avatar" class="profile-avatar">
             <h1 class="profile-name">Alex Doe</h1>
             <p class="profile-email">alex.doe@example.com</p>
+
+            <div class="profile-stats">
+                <div class="stat-item">
+                    <span class="stat-value">12</span>
+                    <span class="stat-label">Saved</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">5</span>
+                    <span class="stat-label">Liked</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">3</span>
+                    <span class="stat-label">Topics</span>
+                </div>
+            </div>
             <div class="profile-actions">
                 <a href="#" class="btn-submit">Edit Profile</a>
                 <a href="#" class="btn-logout">Logout</a>
@@ -43,49 +64,83 @@
 
         <div class="profile-dashboard">
             <div class="dashboard-tabs">
-                <button class="tab-btn active" data-tab="saved">Saved Materials</button>
-                <button class="tab-btn" data-tab="liked">Liked Materials</button>
-                <button class="tab-btn" data-tab="history">Recent History</button>
+                <button class="tab-btn active" data-tab="saved"><i class="fa-solid fa-bookmark"></i> Saved Materials</button>
+                <button class="tab-btn" data-tab="liked"><i class="fa-solid fa-heart"></i> Liked Materials</button>
+                <button class="tab-btn" data-tab="history"><i class="fa-solid fa-clock-rotate-left"></i> Recent History</button>
             </div>
-        
+
             <div id="saved" class="tab-content active">
                 <h2>My Saved Resources</h2>
-                <div class="results-list">
-                    <div class="result-card">
-                        <span class="result-tag video-tag">Video</span>
-                        <h3>Introduction to Astrophysics</h3>
-                        <p class="result-source">Source: MIT OpenCourseWare</p>
-                        <a href="#" class="btn-view">View Resource</a>
+                <div class="results-list profile-results-list">
+                    <div class="result-card profile-result-card">
+                        <img src="https://placehold.co/120x80/FFCDD2/FF5C5C?text=Vid" alt="Resource thumbnail" class="result-thumbnail">
+                        <div class="result-details">
+                            <span class="result-tag video-tag">Video</span>
+                            <h3>Introduction to Astrophysics</h3>
+                            <p class="result-source">Source: MIT OpenCourseWare</p>
+                            <a href="#" class="btn-view">View Resource</a>
+                        </div>
                     </div>
-                </div>
+                    </div>
             </div>
-        
+
             <div id="liked" class="tab-content">
                 <h2>My Liked Materials</h2>
-                <div class="results-list">
-                     <p>You haven't liked any materials yet.</p>
-                </div>
+                <div class="results-list profile-results-list">
+                    <p>You haven't liked any materials yet.</p>
+                     </div>
             </div>
-        
+
             <div id="history" class="tab-content">
                 <h2>My Recent History</h2>
-                <div class="results-list">
-                    <div class="result-card">
-                        <span class="result-tag notes-tag">Notes</span>
-                        <h3>Quantum Mechanics Study Guide</h3>
-                        <p class="result-source">Source: Physics.org</p>
-                        <a href="#" class="btn-view">View Resource</a>
+                <div class="results-list profile-results-list">
+                    <div class="result-card profile-result-card">
+                         <img src="https://placehold.co/120x80/E1BEE7/A155E7?text=Note" alt="Resource thumbnail" class="result-thumbnail">
+                         <div class="result-details">
+                            <span class="result-tag notes-tag">Notes</span>
+                            <h3>Quantum Mechanics Study Guide</h3>
+                            <p class="result-source">Source: Physics.org</p>
+                            <a href="#" class="btn-view">View Resource</a>
+                        </div>
                     </div>
-                </div>
+                    <div class="result-card profile-result-card">
+                        <img src="https://placehold.co/120x80/FFCDD2/FF5C5C?text=Vid" alt="Resource thumbnail" class="result-thumbnail">
+                        <div class="result-details">
+                            <span class="result-tag video-tag">Video</span>
+                            <h3>Introduction to Astrophysics</h3>
+                            <p class="result-source">Source: MIT OpenCourseWare</p>
+                            <a href="#" class="btn-view">View Resource</a>
+                        </div>
+                    </div>
+                     </div>
             </div>
         </div>
     </main>
 
     <footer class="main-footer">
-        <p>&copy; 2025 EduSearch. All rights reserved.</p>
+        <p>&copy; 2025 EduVault. All rights reserved.</p>
     </footer>
-    
+
     <script src="script.js"></script>
+    <script>
+        // Basic Tab Switching Logic
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and content
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+
+                // Add active class to clicked button and corresponding content
+                button.classList.add('active');
+                const targetTab = button.dataset.tab;
+                document.getElementById(targetTab).classList.add('active');
+            });
+        });
+    </script>
+
 
 </body>
 </html>
