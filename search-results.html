@@ -21,8 +21,14 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="search-results.html" class="active"><i class="fa-solid fa-magnifying-glass"></i> Search</a></li>
-                <li><a href="#">Profile</a></li>
+                <li><a href="profile.html">Profile</a></li>
             </ul>
+
+            <button class="theme-toggle" id="theme-toggle" title="Toggle dark/light mode">
+                <i class="fa-solid fa-moon"></i>
+                <i class="fa-solid fa-sun"></i>
+            </button>
+
             <a href="login.html" class="btn-login">Login</a>
             <button class="hamburger" id="hamburger">
                 <i class="fa-solid fa-bars"></i>
@@ -34,14 +40,14 @@
         <div class="search-page-container">
             <aside class="filter-sidebar">
                 <h4>Filter by Type</h4>
-                <ul class="filter-list">
-                    <li><label><input type="checkbox" checked> Videos</label></li>
-                    <li><label><input type="checkbox" checked> Notes</label></li>
-                    <li><label><input type="checkbox"> Podcasts</label></li>
-                    <li><label><input type="checkbox"> Lectures</label></li>
-                    <li><label><input type="checkbox"> Research Papers</label></li>
+                <ul class="filter-list" id="filter-list">
+                    <li><label><input type="checkbox" data-type="video" checked> Videos</label></li>
+                    <li><label><input type="checkbox" data-type="notes" checked> Notes</label></li>
+                    <li><label><input type="checkbox" data-type="podcast"> Podcasts</label></li>
+                    <li><label><input type="checkbox" data-type="lecture"> Lectures</label></li>
+                    <li><label><input type="checkbox" data-type="paper"> Research Papers</label></li>
                 </ul>
-                <h4>Sort by</h4>
+                 <h4>Sort by</h4>
                 <select class="sort-dropdown">
                     <option>Relevance</option>
                     <option>Newest</option>
@@ -51,37 +57,58 @@
 
             <section class="results-section">
                 <h1 id="search-results-heading">Search Results for 'Physics'</h1>
-                <div class="results-list">
-                    <div class="result-card">
+                <div class="results-list" id="results-list">
+                    <div class="result-card" data-type="video">
                         <span class="result-tag video-tag">Video</span>
                         <h3>Introduction to Astrophysics</h3>
                         <p class="result-description">A comprehensive video lecture series by MIT covering the basics of astrophysics, from stellar evolution to cosmology.</p>
                         <p class="result-source">Source: MIT OpenCourseWare</p>
                         <a href="#" class="btn-view">View Resource</a>
                     </div>
-                    <div class="result-card">
+                    <div class="result-card" data-type="notes">
                         <span class="result-tag notes-tag">Notes</span>
                         <h3>Quantum Mechanics Study Guide</h3>
                         <p class="result-description">Detailed PDF notes summarizing key concepts in quantum mechanics, including wave-particle duality and the Schrödinger equation.</p>
                         <p class="result-source">Source: Physics.org</p>
                         <a href="#" class="btn-view">View Resource</a>
                     </div>
-                    <div class="result-card">
+                    <div class="result-card" data-type="video">
                         <span class="result-tag video-tag">Video</span>
                         <h3>The Elegant Universe</h3>
                         <p class="result-description">An engaging documentary explaining the fundamentals of string theory and its implications for our understanding of the universe.</p>
                         <p class="result-source">Source: PBS NOVA</p>
                         <a href="#" class="btn-view">View Resource</a>
                     </div>
+                     <div class="result-card" data-type="podcast">
+                        <span class="result-tag podcast-tag">Podcast</span>
+                        <h3>StarTalk Radio Show with Neil deGrasse Tyson</h3>
+                        <p class="result-description">Explore everything cosmic with astrophysicist Neil deGrasse Tyson, comic co-hosts, celebrities, and scientists.</p>
+                        <p class="result-source">Source: StarTalk</p>
+                        <a href="#" class="btn-view">View Resource</a>
+                    </div>
+                    <div class="result-card" data-type="lecture">
+                        <span class="result-tag lecture-tag">Lecture</span>
+                        <h3>Walter Lewin's Physics Lectures</h3>
+                        <p class="result-description">Classic MIT lectures known for their engaging demonstrations and clear explanations of fundamental physics concepts.</p>
+                        <p class="result-source">Source: MIT OpenCourseWare (Archived)</p>
+                        <a href="#" class="btn-view">View Resource</a>
+                    </div>
+                    <div class="result-card" data-type="paper">
+                        <span class="result-tag paper-tag">Paper</span>
+                        <h3>Gravitational Waves Detection</h3>
+                        <p class="result-description">Research paper detailing the first direct detection of gravitational waves and the first observation of a binary black hole merger.</p>
+                        <p class="result-source">Source: LIGO Scientific Collaboration and Virgo Collaboration (arXiv)</p>
+                        <a href="#" class="btn-view">View Resource</a>
+                    </div>
                 </div>
-            </section>
+                 </section>
         </div>
     </main>
 
     <footer class="main-footer">
         <p>&copy; 2025 EduVault. All rights reserved.</p>
     </footer>
-    
+
     <script src="script.js"></script>
 
 </body>
