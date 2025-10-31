@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-<body>
+<body class="fade-in">
 
     <header class="main-header">
         <nav class="navbar">
@@ -18,11 +18,17 @@
                 <i class="fa-solid fa-book-open"></i> EduVault
             </a>
             <ul class="nav-links" id="nav-links">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i> Search</a></li>
+                <li><a href="search-results.html"><i class="fa-solid fa-magnifying-glass"></i> Search</a></li>
                 <li><a href="profile.html">Profile</a></li>
             </ul>
+
+            <button class="theme-toggle" id="theme-toggle" title="Toggle dark/light mode">
+                <i class="fa-solid fa-moon"></i>
+                <i class="fa-solid fa-sun"></i>
+            </button>
+
             <a href="login.html" class="btn-login">Login</a>
             <button class="hamburger" id="hamburger">
                 <i class="fa-solid fa-bars"></i>
@@ -32,12 +38,15 @@
 
     <main>
         <section class="hero-section">
+            <div id="particles-js"></div>
+
             <div class="hero-content">
                 <h1>Discover Educational Resources Across All Formats</h1>
                 <p>Search for videos, notes, podcasts, lectures, and research papers on any educational topic</p>
                 <form class="search-form" id="home-search-form">
                     <div class="search-bar-container">
-                        <input type="search" placeholder="Search for any educational topic...">
+                        <input type="search" id="search-input" placeholder="Search for any educational topic..." autocomplete="off">
+                        <div class="suggestions-list" id="suggestions-list"></div>
                         <button type="submit" class="search-icon">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
@@ -51,42 +60,42 @@
             <p>Our platform aggregates content from various sources to match how you learn best</p>
 
             <div class="features-grid">
-                <div class="feature-card">
+                <div class="feature-card reveal-on-scroll">
                     <div class="icon-container color-red">
                         <i class="fa-solid fa-video"></i>
                     </div>
                     <h3>Educational Videos</h3>
                     <p>Access thousands of video tutorials, lectures, and demonstrations from top educators and platforms.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card reveal-on-scroll">
                     <div class="icon-container color-blue">
                         <i class="fa-solid fa-file-alt"></i>
                     </div>
                     <h3>Comprehensive Notes</h3>
                     <p>Find detailed notes and study materials for any subject, perfect for review and exam preparation.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card reveal-on-scroll">
                     <div class="icon-container color-purple">
                         <i class="fa-solid fa-headphones"></i>
                     </div>
                     <h3>Educational Podcasts</h3>
                     <p>Listen to expert discussions and lessons on the go with our curated collection of educational podcasts.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card reveal-on-scroll">
                     <div class="icon-container color-green">
                         <i class="fa-solid fa-book"></i>
                     </div>
                     <h3>Recorded Lectures</h3>
                     <p>Attend virtual lectures from prestigious institutions and renowned professors on any subject.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card reveal-on-scroll">
                     <div class="icon-container color-yellow">
                         <i class="fa-solid fa-flask"></i>
                     </div>
                     <h3>Research Papers</h3>
                     <p>Explore academic research papers and stay updated with the latest developments in your field.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card reveal-on-scroll">
                     <div class="icon-container color-indigo">
                         <i class="fa-solid fa-user-graduate"></i>
                     </div>
@@ -96,7 +105,12 @@
             </div>
         </section>
     </main>
-    
+
+    <footer class="main-footer">
+        <p>&copy; 2025 EduVault. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.9.3/tsparticles.bundle.min.js"></script>
     <script src="script.js"></script>
 
 </body>
