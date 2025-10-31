@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-<body class="about-page">
+<body class="about-page fade-in">
 
     <header class="main-header">
         <nav class="navbar">
@@ -19,10 +19,16 @@
             </a>
             <ul class="nav-links" id="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i> Search</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="search-results.html"><i class="fa-solid fa-magnifying-glass"></i> Search</a></li>
                 <li><a href="profile.html">Profile</a></li>
             </ul>
+
+            <button class="theme-toggle" id="theme-toggle" title="Toggle dark/light mode">
+                <i class="fa-solid fa-moon"></i>
+                <i class="fa-solid fa-sun"></i>
+            </button>
+
             <a href="login.html" class="btn-login">Login</a>
             <button class="hamburger" id="hamburger">
                 <i class="fa-solid fa-bars"></i>
@@ -36,7 +42,7 @@
                 <h1>About EduVault</h1>
                 <p>EduVault is a comprehensive educational resource platform designed to connect learners with the best educational content across multiple formats.</p>
                 <p>Our mission is to make learning accessible to everyone by aggregating high-quality educational materials from various sources into one searchable platform. Whether you prefer videos, written notes, podcasts, lectures, or academic research papers, EduVault helps you find the perfect resources for your learning style.</p>
-                
+
                 <h2>Our Vision</h2>
                 <div class="vision-quote">
                     <p>"To create a world where quality education is accessible to everyone, everywhere, in the format that best suits their individual learning needs."</p>
@@ -44,28 +50,28 @@
 
                 <h2>What Makes Us Different</h2>
                 <div class="difference-grid">
-                    <div class="difference-card">
+                    <div class="difference-card reveal-on-scroll">
                         <div class="icon-container color-indigo">
                             <i class="fa-solid fa-book-open"></i>
                         </div>
                         <h3>Diverse Content Formats</h3>
                         <p>We aggregate content in multiple formats to accommodate different learning preferences and styles.</p>
                     </div>
-                    <div class="difference-card">
+                    <div class="difference-card reveal-on-scroll">
                         <div class="icon-container color-green">
                             <i class="fa-solid fa-users"></i>
                         </div>
                         <h3>Community-Driven</h3>
                         <p>Our platform incorporates user ratings and reviews to help surface the highest quality educational resources.</p>
                     </div>
-                    <div class="difference-card">
+                    <div class="difference-card reveal-on-scroll">
                         <div class="icon-container color-purple">
                             <i class="fa-solid fa-globe"></i>
                         </div>
                         <h3>Global Perspective</h3>
                         <p>We source content from educational institutions and creators worldwide to provide diverse perspectives.</p>
                     </div>
-                    <div class="difference-card">
+                    <div class="difference-card reveal-on-scroll">
                         <div class="icon-container color-red">
                             <i class="fa-solid fa-shield-halved"></i>
                         </div>
@@ -76,13 +82,13 @@
 
                 <h2>Our Team</h2>
                 <div class="team-container">
-                    <div class="team-member">
+                    <div class="team-member reveal-on-scroll">
                         <img src="https://placehold.co/400x400/E8EAF6/5A67D8?text=Person+1" alt="Team Member 1">
                     </div>
-                    <div class="team-member">
+                    <div class="team-member reveal-on-scroll">
                         <img src="https://placehold.co/400x400/E4F8EE/27C26C?text=Person+2" alt="Team Member 2">
                     </div>
-                    <div class="team-member">
+                    <div class="team-member reveal-on-scroll">
                         <img src="https://placehold.co/400x400/F4E8FF/A155E7?text=Person+3" alt="Team Member 3">
                     </div>
                 </div>
@@ -116,15 +122,13 @@
                         <p>Your message has been sent successfully. We'll get back to you shortly.</p>
                     </div>
                 </section>
-            </section>
-        </div>
-    </main>
+            </section> </div> </main>
 
     <footer class="main-footer">
-        <p>&copy; 2023 EduVault. All rights reserved.</p>
+        <p>&copy; 2025 EduVault. All rights reserved.</p>
     </footer>
-    
-    <script src="script.js"></script>
 
-</body>
+    <script src="script.js"></script>
+    </body>
 </html>
+
