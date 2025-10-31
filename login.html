@@ -1,61 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - EduVault</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-</head>
-<body>
-
-    <header class="main-header">
-        <nav class="navbar">
-            <a href="index.html" class="logo">
-                <i class="fa-solid fa-book-open"></i> EduVault
-            </a>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="search-results.html"><i class="fa-solid fa-magnifying-glass"></i> Search</a></li>
-                <li><a href="profile.html">Profile</a></li>
-            </ul>
-            <a href="login.html" class="btn-login active">Login</a>
-            <button class="hamburger" id="hamburger">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-        </nav>
-    </header>
-
-    <main class="login-page-main">
-        <div class="login-container">
-            <h2>Welcome Back!</h2>
-            <form class="login-form" id="login-form"></form>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <div class="form-options">
-                    <label class="remember-me"><input type="checkbox"> Remember me</label>
-                    <a href="#" class="forgot-password">Forgot password?</a>
-                </div>
-                <button type="submit" class="btn-submit">Login</button>
-            </form>
-            <p class="signup-link">Don't have an account? <a href="signup.html">Sign Up</a></p>
-        </div>
-    </main>
-    
-    <script src="script.js"></script>
-
-</body>
-</html> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,12 +10,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-<body>
+<body class="fade-in">
 
     <header class="main-header">
-        </header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-book-open"></i> EduVault
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="search-results.html"><i class="fa-solid fa-magnifying-glass"></i> Search</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+            
+            <button class="theme-toggle" id="theme-toggle" title="Toggle dark/light mode">
+                <i class="fa-solid fa-moon"></i>
+                <i class="fa-solid fa-sun"></i>
+            </button>
+
+            <a href="login.html" class="btn-login active">Login</a>
+            <button class="hamburger" id="hamburger">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </nav>
+    </header>
 
     <main class="login-page-main">
+        
         <div class="login-container">
             <h2>Welcome Back!</h2>
             <form class="login-form" id="login-form">
@@ -103,6 +67,9 @@
         </div>
     </main>
     
+    <footer class="main-footer" >
+        <p>&copy; 2025 EduVault. All rights reserved.</p>
+    </footer>
     <script src="script.js"></script>
 
 </body>
