@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-<body>
+<body class="fade-in">
 
     <header class="main-header">
         <nav class="navbar">
@@ -43,11 +43,11 @@
                 <ul class="filter-list" id="filter-list">
                     <li><label><input type="checkbox" data-type="video" checked> Videos</label></li>
                     <li><label><input type="checkbox" data-type="notes" checked> Notes</label></li>
-                    <li><label><input type="checkbox" data-type="podcast"> Podcasts</label></li>
-                    <li><label><input type="checkbox" data-type="lecture"> Lectures</label></li>
-                    <li><label><input type="checkbox" data-type="paper"> Research Papers</label></li>
+                    <li><label><input type="checkbox" data-type="podcast" checked> Podcasts</label></li>
+                    <li><label><input type="checkbox" data-type="lecture" checked> Lectures</label></li>
+                    <li><label><input type="checkbox" data-type="paper" checked> Research Papers</label></li>
                 </ul>
-                 <h4>Sort by</h4>
+                <h4>Sort by</h4>
                 <select class="sort-dropdown">
                     <option>Relevance</option>
                     <option>Newest</option>
@@ -56,52 +56,37 @@
             </aside>
 
             <section class="results-section">
-                <h1 id="search-results-heading">Search Results for 'Physics'</h1>
+                <h1 id="search-results-heading">Search Results</h1>
+                
                 <div class="results-list" id="results-list">
-                    <div class="result-card" data-type="video">
-                        <span class="result-tag video-tag">Video</span>
-                        <h3>Introduction to Astrophysics</h3>
-                        <p class="result-description">A comprehensive video lecture series by MIT covering the basics of astrophysics, from stellar evolution to cosmology.</p>
-                        <p class="result-source">Source: MIT OpenCourseWare</p>
-                        <a href="#" class="btn-view">View Resource</a>
+                    
+                    <div class="result-card skeleton-card">
+                        <div class="skeleton-line skeleton-tag"></div>
+                        <div class="skeleton-line skeleton-h3"></div>
+                        <div class="skeleton-line skeleton-p"></div>
+                        <div class="skeleton-line skeleton-p-short"></div>
+                        <div class="skeleton-line skeleton-meta"></div>
+                        <div class="skeleton-line skeleton-button"></div>
                     </div>
-                    <div class="result-card" data-type="notes">
-                        <span class="result-tag notes-tag">Notes</span>
-                        <h3>Quantum Mechanics Study Guide</h3>
-                        <p class="result-description">Detailed PDF notes summarizing key concepts in quantum mechanics, including wave-particle duality and the Schrödinger equation.</p>
-                        <p class="result-source">Source: Physics.org</p>
-                        <a href="#" class="btn-view">View Resource</a>
+                    <div class="result-card skeleton-card">
+                        <div class="skeleton-line skeleton-tag"></div>
+                        <div class="skeleton-line skeleton-h3"></div>
+                        <div class="skeleton-line skeleton-p"></div>
+                        <div class="skeleton-line skeleton-p-short"></div>
+                        <div class="skeleton-line skeleton-meta"></div>
+                        <div class="skeleton-line skeleton-button"></div>
                     </div>
-                    <div class="result-card" data-type="video">
-                        <span class="result-tag video-tag">Video</span>
-                        <h3>The Elegant Universe</h3>
-                        <p class="result-description">An engaging documentary explaining the fundamentals of string theory and its implications for our understanding of the universe.</p>
-                        <p class="result-source">Source: PBS NOVA</p>
-                        <a href="#" class="btn-view">View Resource</a>
+                    <div class="result-card skeleton-card">
+                        <div class="skeleton-line skeleton-tag"></div>
+                        <div class="skeleton-line skeleton-h3"></div>
+                        <div class="skeleton-line skeleton-p"></div>
+                        <div class="skeleton-line skeleton-p-short"></div>
+                        <div class="skeleton-line skeleton-meta"></div>
+                        <div class="skeleton-line skeleton-button"></div>
                     </div>
-                     <div class="result-card" data-type="podcast">
-                        <span class="result-tag podcast-tag">Podcast</span>
-                        <h3>StarTalk Radio Show with Neil deGrasse Tyson</h3>
-                        <p class="result-description">Explore everything cosmic with astrophysicist Neil deGrasse Tyson, comic co-hosts, celebrities, and scientists.</p>
-                        <p class="result-source">Source: StarTalk</p>
-                        <a href="#" class="btn-view">View Resource</a>
-                    </div>
-                    <div class="result-card" data-type="lecture">
-                        <span class="result-tag lecture-tag">Lecture</span>
-                        <h3>Walter Lewin's Physics Lectures</h3>
-                        <p class="result-description">Classic MIT lectures known for their engaging demonstrations and clear explanations of fundamental physics concepts.</p>
-                        <p class="result-source">Source: MIT OpenCourseWare (Archived)</p>
-                        <a href="#" class="btn-view">View Resource</a>
-                    </div>
-                    <div class="result-card" data-type="paper">
-                        <span class="result-tag paper-tag">Paper</span>
-                        <h3>Gravitational Waves Detection</h3>
-                        <p class="result-description">Research paper detailing the first direct detection of gravitational waves and the first observation of a binary black hole merger.</p>
-                        <p class="result-source">Source: LIGO Scientific Collaboration and Virgo Collaboration (arXiv)</p>
-                        <a href="#" class="btn-view">View Resource</a>
-                    </div>
+
                 </div>
-                 </section>
+                </section>
         </div>
     </main>
 
