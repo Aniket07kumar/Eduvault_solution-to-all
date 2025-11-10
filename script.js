@@ -1,14 +1,12 @@
 // script.js
 
-// script.js
-
+// --- Runs when the page content is loaded ---
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- Hamburger Menu Logic ---
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('nav-links');
-
-    if (hamburger) { // Check if hamburger exists on the page
+    if (hamburger) {
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
         });
@@ -16,31 +14,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Dark Mode Toggle Logic ---
     const themeToggle = document.getElementById('theme-toggle');
-    const htmlEl = document.documentElement; // This is the <html> tag
-
-    if (themeToggle) { // Check if the toggle exists on the page
-
-        // 1. Check for a saved theme in localStorage
+    const htmlEl = document.documentElement;
+    if (themeToggle) {
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
             htmlEl.setAttribute('data-theme', savedTheme);
         }
-
-        // 2. Add click listener to the toggle
         themeToggle.addEventListener('click', () => {
-            // Get the current theme
             const currentTheme = htmlEl.getAttribute('data-theme');
             const newTheme = (currentTheme === 'dark') ? 'light' : 'dark';
-
-            // Set the new theme
             htmlEl.setAttribute('data-theme', newTheme);
-
-            // Save the new preference to localStorage
             localStorage.setItem('theme', newTheme);
         });
     }
 
-    // --- Particle Background Initialization (Only on Homepage) ---
+    // --- Particle Background Initialization (Homepage Only) ---
     if (document.getElementById('particles-js')) {
         // Ensure tsParticles is loaded before using it
         if (typeof tsParticles !== 'undefined') {
@@ -63,13 +51,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 particles: {
                     color: {
-                        value: "#ffffff", // Particle color
+                        value: "#ffffff",
                     },
                     links: {
-                        color: "#ffffff", // Link color
+                        color: "#ffffff",
                         distance: 150,
                         enable: true,
-                        opacity: 0.3, // Make links subtle
+                        opacity: 0.3,
                         width: 1,
                     },
                     collisions: {
@@ -82,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             default: "bounce",
                         },
                         random: false,
-                        speed: 1, // Slow speed
+                        speed: 1,
                         straight: false,
                     },
                     number: {
@@ -90,16 +78,16 @@ document.addEventListener('DOMContentLoaded', () => {
                             enable: true,
                             area: 800,
                         },
-                        value: 80, // Number of particles
+                        value: 80,
                     },
                     opacity: {
-                        value: 0.3, // Make particles subtle
+                        value: 0.3,
                     },
                     shape: {
                         type: "circle",
                     },
                     size: {
-                        value: { min: 1, max: 3 }, // Small particle size
+                        value: { min: 1, max: 3 },
                     },
                 },
                 detectRetina: true,
@@ -109,12 +97,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- Search Auto-Suggestion Logic (Only on Homepage) ---
+    // --- Search Auto-Suggestion Logic (Homepage Only) ---
     const searchInput = document.getElementById('search-input');
     const suggestionsList = document.getElementById('suggestions-list');
-
     if (searchInput && suggestionsList) {
-        // Sample list of suggestions (replace with your actual data)
         const sampleSuggestions = [
             "Thermodynamics",
             "Quantum Mechanics",
@@ -132,8 +118,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         searchInput.addEventListener('input', () => {
             const query = searchInput.value.toLowerCase().trim();
-            suggestionsList.innerHTML = ''; // Clear previous suggestions
-            suggestionsList.style.display = 'none'; // Hide by default
+            suggestionsList.innerHTML = '';
+            suggestionsList.style.display = 'none';
 
             if (query.length > 0) {
                 const filteredSuggestions = sampleSuggestions.filter(item =>
@@ -146,23 +132,19 @@ document.addEventListener('DOMContentLoaded', () => {
                         const li = document.createElement('li');
                         li.textContent = item;
                         li.addEventListener('click', () => {
-                            searchInput.value = item; // Fill input on click
-                            suggestionsList.innerHTML = ''; // Clear suggestions
-                            suggestionsList.style.display = 'none'; // Hide list
-                            // Optionally trigger search form submit here
-                            // homeSearchForm.requestSubmit();
+                            searchInput.value = item;
+                            suggestionsList.innerHTML = '';
+                            suggestionsList.style.display = 'none';
                         });
                         ul.appendChild(li);
                     });
                     suggestionsList.appendChild(ul);
-                    suggestionsList.style.display = 'block'; // Show suggestions
+                    suggestionsList.style.display = 'block';
                 }
             }
         });
 
-        // Hide suggestions when clicking outside
         document.addEventListener('click', (e) => {
-            // Check if the click is outside the search input AND outside the suggestions list
             if (searchInput && suggestionsList && !searchInput.contains(e.target) && !suggestionsList.contains(e.target)) {
                 suggestionsList.innerHTML = '';
                 suggestionsList.style.display = 'none';
@@ -170,130 +152,160 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Initial Fade-in Call (Ensures animation plays correctly) ---
-    // Make sure body has fade-in class on initial load if not already added by CSS animation
-    // document.body.classList.add('fade-in'); // This might re-trigger animation, CSS handles initial state
+    // --- Initial Page Fade-in ---
+    document.body.classList.add('fade-in');
+
+}); // --- End of DOMContentLoaded ---
 
 
-}); // End of DOMContentLoaded listener
-
-
-// --- Contact Form Logic ---
+// --- Contact Form Logic (About Page) ---
 const contactForm = document.getElementById('contact-form');
 const successMessage = document.getElementById('success-message');
-
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
-
-        // --- Simulate sending data ---
         console.log('Simulating form submission...');
-
-        // --- Show success after a short delay ---
         setTimeout(() => {
             contactForm.style.display = 'none';
             successMessage.style.display = 'block';
             console.log('Submission successful!');
-        }, 500); // Simulate network delay
+        }, 500);
     });
 }
 
 
 // --- Homepage Search Form Redirect ---
 const homeSearchForm = document.getElementById('home-search-form');
-// Get searchInput defined earlier if it exists (on homepage)
 const homeSearchInput = document.getElementById('search-input');
-
 if (homeSearchForm) {
     homeSearchForm.addEventListener('submit', (e) => {
-        e.preventDefault(); // Stop the form from reloading the page
-
-        // Get the value the user typed, trimming any extra spaces
+        e.preventDefault(); 
         const query = homeSearchInput ? homeSearchInput.value.trim() : '';
-
-        // If the user actually typed something, redirect them
         if (query) {
-            // Redirect to the search results page with the query in the URL
             window.location.href = `search-results.html?query=${encodeURIComponent(query)}`;
         }
     });
 }
 
 
-// --- Update Search Results Heading ---
-const searchResultsHeading = document.getElementById('search-results-heading');
-
-if (searchResultsHeading) {
-    const urlParams = new URLSearchParams(window.location.search);
-    const query = urlParams.get('query');
-    if (query) {
-        searchResultsHeading.textContent = `Search Results for '${decodeURIComponent(query)}'`; // Decode query
-    }
-}
-
-// --- Sign-up Success Pop-up and Redirect ---
-// Check if we are on the sign-up page FIRST by checking the title
+// --- Signup Page Logic ---
 if (document.title.includes("Sign Up")) {
-    // Now, select the elements using simpler selectors
-    const signUpPageForm = document.querySelector('.login-form'); // Select the form on this page
-    const signUpSuccessPopup = document.getElementById('success-popup'); // Select the popup on this page
-
-    // Only add the listener if the form exists on this page
+    const signUpPageForm = document.querySelector('.login-form');
+    const signUpSuccessPopup = document.getElementById('success-popup');
+    const errorMessageElement = document.getElementById('error-message');
     if (signUpPageForm) {
-        signUpPageForm.addEventListener('submit', (e) => {
+        signUpPageForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            if (signUpSuccessPopup) {
-                signUpSuccessPopup.classList.add('show');
+            if (errorMessageElement) {
+                errorMessageElement.style.display = 'none';
             }
-            setTimeout(() => {
-                window.location.href = 'index.html'; // Redirect to homepage
-            }, 2000);
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('http://127.0.0.1:5000/api/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name, email, password })
+                });
+                const data = await response.json();
+                if (response.ok) {
+                    if (signUpSuccessPopup) {
+                        signUpSuccessPopup.classList.add('show');
+                    }
+                    setTimeout(() => {
+                        window.location.href = 'login.html';
+                    }, 2000);
+                } else {
+                    if (errorMessageElement) {
+                        errorMessageElement.textContent = data.message || 'Signup failed. Please try again.';
+                        errorMessageElement.style.display = 'block';
+                    }
+                }
+            } catch (error) {
+                console.error('Signup error:', error);
+                if (errorMessageElement) {
+                    errorMessageElement.textContent = 'An error occurred. Please check your connection.';
+                    errorMessageElement.style.display = 'block';
+                }
+            }
         });
     }
 }
 
 
-// --- Login Success Pop-up and Redirect ---
-// Check if we are on the login page FIRST by checking the title
+// --- Login Page Logic ---
 if (document.title.includes("Login")) {
     const loginPageForm = document.getElementById('login-form');
-    // Select the popup using its ID *after* confirming we are on the login page
     const loginSuccessPopup = document.getElementById('success-popup');
-
-    // Only add the listener if the form exists on this page
+    const errorMessageElement = document.getElementById('error-message');
     if (loginPageForm) {
-        loginPageForm.addEventListener('submit', (e) => {
+        loginPageForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            if (loginSuccessPopup) { // Check if the popup was found
-                loginSuccessPopup.classList.add('show');
+            if (errorMessageElement) {
+                errorMessageElement.style.display = 'none';
             }
-            setTimeout(() => {
-                window.location.href = 'index.html'; // Redirect to homepage
-            }, 2000);
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('http://127.0.0.1:5000/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+                const data = await response.json();
+                if (response.ok) {
+                    localStorage.setItem('eduVaultToken', data.access_token);
+                    if (loginSuccessPopup) {
+                        loginSuccessPopup.classList.add('show');
+                    }
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 2000);
+                } else {
+                    if (errorMessageElement) {
+                        errorMessageElement.textContent = data.message || 'Login failed. Please try again.';
+                        errorMessageElement.style.display = 'block';
+                    }
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                if (errorMessageElement) {
+                    errorMessageElement.textContent = 'An error occurred. Please check your connection.';
+                    errorMessageElement.style.display = 'block';
+                }
+            }
         });
     }
 }
 
-// --- Search Results Filter Logic ---
-const filterCheckboxes = document.querySelectorAll('#filter-list input[type="checkbox"]');
-const resultCards = document.querySelectorAll('#results-list .result-card');
 
-if (filterCheckboxes.length > 0 && resultCards.length > 0) {
+// --- Search Results Page Logic (Load, Filter, Save) ---
+if (document.title.includes("Search Results")) {
+    const searchResultsHeading = document.getElementById('search-results-heading');
+    const resultsList = document.getElementById('results-list');
+    const filterCheckboxes = document.querySelectorAll('#filter-list input[type="checkbox"]');
+    const token = localStorage.getItem('eduVaultToken');
 
+    // 1. Filter Function
     const applyFilters = () => {
+        const resultCards = document.querySelectorAll('#results-list .result-card');
+        if (resultCards.length === 0) return;
         const checkedTypes = [];
         filterCheckboxes.forEach(checkbox => {
             if (checkbox.checked) {
                 checkedTypes.push(checkbox.dataset.type);
             }
         });
-
-        // If no boxes are checked, show all cards
         const showAll = checkedTypes.length === 0;
-
         resultCards.forEach(card => {
             const cardType = card.dataset.type;
-            // Show card if 'showAll' is true OR if its type is in the checkedTypes array
             if (showAll || checkedTypes.includes(cardType)) {
                 card.classList.remove('card-hidden');
             } else {
@@ -301,35 +313,220 @@ if (filterCheckboxes.length > 0 && resultCards.length > 0) {
             }
         });
     };
+    
+    // 2. Load Search Results
+    const loadSearchResults = async () => {
+        try {
+            // ## START: UPDATED SEARCH LOGIC ##
+            const urlParams = new URLSearchParams(window.location.search);
+            const query = urlParams.get('query') || ''; // Get the query term
 
-    // Add event listener to each checkbox
+            if (searchResultsHeading) {
+                if (query) {
+                    searchResultsHeading.textContent = `Search Results for '${decodeURIComponent(query)}'`;
+                } else {
+                    searchResultsHeading.textContent = 'All Resources'; // Fallback
+                }
+            }
+
+            // Pass the query to the backend API
+            const response = await fetch(`http://127.0.0.1:5000/api/search?q=${encodeURIComponent(query)}`);
+            // ## END: UPDATED SEARCH LOGIC ##
+
+            const resources = await response.json();
+
+            if (!response.ok) {
+                resultsList.innerHTML = `<p>Failed to load resources. ${resources.message || ''}</p>`;
+                return;
+            }
+            if (resources.length === 0) {
+                resultsList.innerHTML = '<p>No resources found for this query.</p>';
+                return;
+            }
+
+            resultsList.innerHTML = ''; // Clear loading placeholder
+
+            resources.forEach(resource => {
+                const tagClass = `${resource.type.toLowerCase()}-tag`;
+                // Use .get() for safety, provide defaults
+                const ratingCount = resource.ratingCount || 0;
+                const ratingSum = resource.ratingSum || 0;
+                const visits = resource.visits || 0;
+                
+                const rating = ratingCount > 0 ? (ratingSum / ratingCount).toFixed(1) : 'N/A';
+                const visitCount = visits > 1000 ? `${(visits / 1000).toFixed(1)}k` : visits;
+                
+                const cardHTML = `
+                    <div class="result-card" data-type="${resource.type}" data-id="${resource._id}">
+                        <button class="save-btn" title="Save resource">
+                            <i class="fa-regular fa-bookmark"></i>
+                        </button>
+                        <span class="result-tag ${tagClass}">${resource.type}</span>
+                        <h3>${resource.title}</h3>
+                        <p class="result-description">${resource.description || 'No description available.'}</p>
+                        <p class="result-source">Source: ${resource.source || 'N/A'}</p>
+                        <div class="result-meta">
+                            <span class="visits" title="Views"><i class="fa-solid fa-eye"></i> ${visitCount}</span> 
+                            <span class="rating" title="Rating"><i class="fa-solid fa-star"></i> ${rating}</span>
+                        </div>
+                        <a href="${resource.url}" class="btn-view" target="_blank">View Resource</a>
+                    </div>
+                `;
+                resultsList.insertAdjacentHTML('beforeend', cardHTML);
+            });
+            
+            // 4. Apply filters *after* loading
+            applyFilters(); 
+
+        } catch (error) {
+            console.error('Error loading search results:', error);
+            resultsList.innerHTML = '<p>An error occurred while loading resources.</p>';
+        }
+    };
+    
+    // 3. Add Filter Event Listeners
     filterCheckboxes.forEach(checkbox => {
         checkbox.addEventListener('change', applyFilters);
     });
 
-    // Initial filter application on page load to respect default checked state
-    applyFilters();
+    // 4. Add Save Click Listener (using event delegation on resultsList)
+    if(resultsList) {
+        resultsList.addEventListener('click', async (e) => {
+            const saveButton = e.target.closest('.save-btn');
+            
+            if (saveButton) {
+                const card = saveButton.closest('.result-card');
+                const resourceId = card.dataset.id;
+                
+                if (!token) {
+                    window.location.href = 'login.html'; // Redirect if not logged in
+                    return;
+                }
+                
+                // Prevent saving non-DB items (like YouTube results) by ID
+                // This checks if the ID is a 24-char hex string (MongoDB ID)
+                if (resourceId.length !== 24 || !/^[0-9a-fA-F]+$/.test(resourceId)) {
+                    alert("This external resource cannot be saved to your profile (yet!)");
+                    return;
+                }
+
+                try {
+                    const response = await fetch(`http://127.0.0.1:5000/api/save/${resourceId}`, {
+                        method: 'POST',
+                        headers: { 'Authorization': `Bearer ${token}` }
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        saveButton.innerHTML = '<i class="fa-solid fa-bookmark"></i>';
+                        saveButton.title = "Saved";
+                    } else {
+                        alert(data.message); // Show error (e.g., "Cannot save external resource")
+                    }
+                } catch (error) {
+                    console.error("Error saving resource:", error);
+                }
+            }
+        });
+    }
+
+    // 5. Initial Load
+    loadSearchResults();
+}
+
+
+// --- Profile Page Logic (Load Profile & Saved) ---
+if (document.title.includes("My Profile")) {
+    
+    async function loadProfileData() {
+        const token = localStorage.getItem('eduVaultToken');
+        if (!token) {
+            window.location.href = 'login.html';
+            return;
+        }
+        try {
+            const response = await fetch('http://127.0.0.1:5000/api/profile', {
+                method: 'GET',
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            const data = await response.json();
+            if (response.ok) {
+                document.querySelector('.profile-name').textContent = data.name;
+                document.querySelector('.profile-email').textContent = data.email;
+            } else {
+                localStorage.removeItem('eduVaultToken');
+                window.location.href = 'login.html';
+            }
+        } catch (error) {
+            window.location.href = 'login.html';
+        }
+    }
+
+    async function loadSavedResources() {
+        const token = localStorage.getItem('eduVaultToken');
+        if (!token) return; 
+        try {
+            const response = await fetch('http://127.0.0.1:5000/api/saved-resources', {
+                method: 'GET',
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            const resources = await response.json();
+            if (response.ok) {
+                const container = document.querySelector('#saved .profile-results-list');
+                if (!container) return; 
+                if (resources.length === 0) {
+                    container.innerHTML = '<p>You haven\'t saved any resources yet.</p>';
+                    return;
+                }
+                container.innerHTML = ''; 
+                resources.forEach(resource => {
+                    let tagClass = `${resource.type.toLowerCase()}-tag`;
+                    const ratingCount = resource.ratingCount || 0;
+                    const ratingSum = resource.ratingSum || 0;
+                    const visits = resource.visits || 0;
+                    const rating = ratingCount > 0 ? (ratingSum / ratingCount).toFixed(1) : 'N/A';
+                    const visitCount = visits > 1000 ? `${(visits / 1000).toFixed(1)}k` : visits;
+
+                    const cardHTML = `
+                        <div class="result-card profile-result-card" data-id="${resource._id}">
+                            <img src="https://placehold.co/120x80/E0E0E0/333?text=${resource.type.charAt(0).toUpperCase()}" alt="Resource thumbnail" class="result-thumbnail">
+                            <div class="result-details">
+                                <span class="result-tag ${tagClass}">${resource.type}</span>
+                                <h3>${resource.title}</h3>
+                                <p class="result-source">Source: ${resource.source || 'N/A'}</p>
+                                <div class="result-meta">
+                                    <span class="visits" title="Views"><i class="fa-solid fa-eye"></i> ${visitCount}</span> 
+                                    <span class="rating" title="Rating"><i class="fa-solid fa-star"></i> ${rating}</span>
+                                </div>
+                                <a href="${resource.url}" class="btn-view" target="_blank">View Resource</a>
+                            </div>
+                        </div>
+                    `;
+                    container.insertAdjacentHTML('beforeend', cardHTML);
+                });
+            } else {
+                console.error("Failed to load saved resources:", resources.message);
+            }
+        } catch (error) {
+            console.error('Error fetching saved resources:', error);
+        }
+    }
+    loadProfileData();
+    loadSavedResources(); 
 }
 
 
 // --- Page Transition Fade-Out ---
 document.querySelectorAll('a').forEach(link => {
-    // Check if it's an internal link (not external or just '#') and doesn't open in a new tab
     if (link.hostname === window.location.hostname && link.pathname !== window.location.pathname && !link.hash && link.target !== '_blank') {
         link.addEventListener('click', e => {
             const destination = link.href;
-
-            // Prevent default navigation
             e.preventDefault();
-
-            // Start fade-out
             document.body.style.opacity = '0';
-            // document.body.classList.remove('fade-in'); // Optional: remove fade-in if needed
-
-            // Navigate after fade-out completes
             setTimeout(() => {
                 window.location.href = destination;
-            }, 300); // Match timeout to body transition duration in CSS
+            }, 300); 
         });
     }
 });
@@ -337,34 +534,22 @@ document.querySelectorAll('a').forEach(link => {
 
 // --- Reveal on Scroll Logic ---
 const revealElements = document.querySelectorAll('.reveal-on-scroll');
-
-if (revealElements.length > 0) { // Check if elements exist before creating observer
-    console.log(`Found ${revealElements.length} elements to reveal.`); // Debug message
-
+if (revealElements.length > 0) {
     const revealObserverOptions = {
-      root: null, // viewport
+      root: null, 
       rootMargin: '0px',
-      threshold: 0.1 // Trigger when 10% is visible
+      threshold: 0.1 
     };
-
     const revealCallback = (entries, observer) => {
         entries.forEach(entry => {
-            console.log(`Observing: ${entry.target.tagName}, Intersecting: ${entry.isIntersecting}`); // Debug message
             if (entry.isIntersecting) {
-                console.log(`Revealing: ${entry.target.tagName}`); // Debug message
                 entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target); // Stop observing once revealed
+                observer.unobserve(entry.target); 
             }
         });
     };
-
     const revealObserver = new IntersectionObserver(revealCallback, revealObserverOptions);
-
     revealElements.forEach(el => {
-        console.log(`Setting up observer for: ${el.tagName} with class ${el.className}`); // More detailed debug
         revealObserver.observe(el);
     });
-} else {
-    console.log("No elements with class 'reveal-on-scroll' found."); // Debug message
 }
-// ## END: REVEAL ON SCROLL LOGIC ##
