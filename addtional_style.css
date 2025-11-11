@@ -1,0 +1,54 @@
+/* Add this to the end of your style.css file */
+
+/* ## START: RELEVANCE SCORE BADGE ## */
+.relevance-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+/* ## END: RELEVANCE SCORE BADGE ## */
+
+/* ## START: SAVE BUTTON STYLES ## */
+.save-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--card-background);
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--subtle-text-color);
+    font-size: 1rem;
+}
+
+.save-btn:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.save-btn:disabled {
+    cursor: not-allowed;
+    background: var(--light-gray-bg);
+}
+
+.save-btn .fa-solid {
+    color: var(--accent-color);
+}
+
+.result-card {
+    position: relative; /* For absolute positioning of save button */
+}
+/* ## END: SAVE BUTTON STYLES ## */
