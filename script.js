@@ -30,67 +30,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Particle Background Initialization (Homepage Only) ---
     if (document.getElementById('particles-js')) {
-        // Ensure tsParticles is loaded before using it
         if (typeof tsParticles !== 'undefined') {
             tsParticles.load("particles-js", {
                 fpsLimit: 60,
-                interactivity: {
-                    events: {
-                        onHover: {
-                            enable: true,
-                            mode: "repulse",
-                        },
-                        resize: true,
-                    },
-                    modes: {
-                        repulse: {
-                            distance: 100,
-                            duration: 0.4,
-                        },
-                    },
-                },
+                interactivity: { events: { onHover: { enable: true, mode: "repulse" }, resize: true }, modes: { repulse: { distance: 100, duration: 0.4 } } },
                 particles: {
-                    color: {
-                        value: "#ffffff",
-                    },
-                    links: {
-                        color: "#ffffff",
-                        distance: 150,
-                        enable: true,
-                        opacity: 0.3,
-                        width: 1,
-                    },
-                    collisions: {
-                        enable: true,
-                    },
-                    move: {
-                        direction: "none",
-                        enable: true,
-                        outModes: {
-                            default: "bounce",
-                        },
-                        random: false,
-                        speed: 1,
-                        straight: false,
-                    },
-                    number: {
-                        density: {
-                            enable: true,
-                            area: 800,
-                        },
-                        value: 80,
-                    },
-                    opacity: {
-                        value: 0.3,
-                    },
-                    shape: {
-                        type: "circle",
-                    },
-                    size: {
-                        value: { min: 1, max: 3 },
-                    },
+                    color: { value: "#ffffff" },
+                    links: { color: "#ffffff", distance: 150, enable: true, opacity: 0.3, width: 1 },
+                    collisions: { enable: true },
+                    move: { direction: "none", enable: true, outModes: { default: "bounce" }, random: false, speed: 1, straight: false },
+                    number: { density: { enable: true, area: 800 }, value: 80 },
+                    opacity: { value: 0.3 },
+                    shape: { type: "circle" },
+                    size: { value: { min: 1, max: 3 } }
                 },
-                detectRetina: true,
+                detectRetina: true
             });
         } else {
             console.error("tsParticles library not loaded.");
@@ -101,31 +55,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('search-input');
     const suggestionsList = document.getElementById('suggestions-list');
     if (searchInput && suggestionsList) {
-        const sampleSuggestions = [
-            "Thermodynamics",
-            "Quantum Mechanics",
-            "Data Structures",
-            "Algorithms",
-            "Machine Learning",
-            "Artificial Intelligence",
-            "Web Development",
-            "Fluid Dynamics",
-            "Circuit Design",
-            "Software Engineering",
-            "Structural Analysis",
-            "Materials Science"
-        ];
-
+        const sampleSuggestions = [ "Thermodynamics", "Quantum Mechanics", "Data Structures", "Algorithms", "Machine Learning", "Artificial Intelligence", "Web Development", "Fluid Dynamics", "Circuit Design", "Software Engineering", "Structural Analysis", "Materials Science" ];
         searchInput.addEventListener('input', () => {
             const query = searchInput.value.toLowerCase().trim();
             suggestionsList.innerHTML = '';
             suggestionsList.style.display = 'none';
-
             if (query.length > 0) {
-                const filteredSuggestions = sampleSuggestions.filter(item =>
-                    item.toLowerCase().includes(query)
-                );
-
+                const filteredSuggestions = sampleSuggestions.filter(item => item.toLowerCase().includes(query));
                 if (filteredSuggestions.length > 0) {
                     const ul = document.createElement('ul');
                     filteredSuggestions.forEach(item => {
@@ -143,7 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
-
         document.addEventListener('click', (e) => {
             if (searchInput && suggestionsList && !searchInput.contains(e.target) && !suggestionsList.contains(e.target)) {
                 suggestionsList.innerHTML = '';
@@ -196,29 +131,20 @@ if (document.title.includes("Sign Up")) {
     if (signUpPageForm) {
         signUpPageForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            if (errorMessageElement) {
-                errorMessageElement.style.display = 'none';
-            }
+            if (errorMessageElement) { errorMessageElement.style.display = 'none'; }
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-
             try {
-                const response = await fetch('http://127.0.0.1:5000/api/signup', {
+                const response = await fetch('[http://127.0.0.1:5000/api/signup](http://127.0.0.1:5000/api/signup)', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ name, email, password })
                 });
                 const data = await response.json();
                 if (response.ok) {
-                    if (signUpSuccessPopup) {
-                        signUpSuccessPopup.classList.add('show');
-                    }
-                    setTimeout(() => {
-                        window.location.href = 'login.html';
-                    }, 2000);
+                    if (signUpSuccessPopup) { signUpSuccessPopup.classList.add('show'); }
+                    setTimeout(() => { window.location.href = 'login.html'; }, 2000);
                 } else {
                     if (errorMessageElement) {
                         errorMessageElement.textContent = data.message || 'Signup failed. Please try again.';
@@ -245,29 +171,20 @@ if (document.title.includes("Login")) {
     if (loginPageForm) {
         loginPageForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            if (errorMessageElement) {
-                errorMessageElement.style.display = 'none';
-            }
+            if (errorMessageElement) { errorMessageElement.style.display = 'none'; }
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-
             try {
-                const response = await fetch('http://127.0.0.1:5000/api/login', {
+                const response = await fetch('[http://127.0.0.1:5000/api/login](http://127.0.0.1:5000/api/login)', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email, password })
                 });
                 const data = await response.json();
                 if (response.ok) {
                     localStorage.setItem('eduVaultToken', data.access_token);
-                    if (loginSuccessPopup) {
-                        loginSuccessPopup.classList.add('show');
-                    }
-                    setTimeout(() => {
-                        window.location.href = 'index.html';
-                    }, 2000);
+                    if (loginSuccessPopup) { loginSuccessPopup.classList.add('show'); }
+                    setTimeout(() => { window.location.href = 'index.html'; }, 2000);
                 } else {
                     if (errorMessageElement) {
                         errorMessageElement.textContent = data.message || 'Login failed. Please try again.';
@@ -292,6 +209,9 @@ if (document.title.includes("Search Results")) {
     const resultsList = document.getElementById('results-list');
     const filterCheckboxes = document.querySelectorAll('#filter-list input[type="checkbox"]');
     const token = localStorage.getItem('eduVaultToken');
+    
+    // This will store the full data of the results being displayed
+    let currentResultsData = [];
 
     // 1. Filter Function
     const applyFilters = () => {
@@ -317,47 +237,46 @@ if (document.title.includes("Search Results")) {
     // 2. Load Search Results
     const loadSearchResults = async () => {
         try {
-            // ## START: UPDATED SEARCH LOGIC ##
             const urlParams = new URLSearchParams(window.location.search);
-            const query = urlParams.get('query') || ''; // Get the query term
+            const query = urlParams.get('query') || ''; 
 
             if (searchResultsHeading) {
                 if (query) {
                     searchResultsHeading.textContent = `Search Results for '${decodeURIComponent(query)}'`;
                 } else {
-                    searchResultsHeading.textContent = 'All Resources'; // Fallback
+                    searchResultsHeading.textContent = 'All Resources'; 
                 }
             }
 
-            // Pass the query to the backend API
             const response = await fetch(`http://127.0.0.1:5000/api/search?q=${encodeURIComponent(query)}`);
-            // ## END: UPDATED SEARCH LOGIC ##
-
-            const resources = await response.json();
+            const data = await response.json(); // API now returns an object { results: [...] }
+            const resources = data.results;
+            
+            // Store results data globally for this page
+            currentResultsData = resources;
 
             if (!response.ok) {
-                resultsList.innerHTML = `<p>Failed to load resources. ${resources.message || ''}</p>`;
+                resultsList.innerHTML = `<p>Failed to load resources. ${data.message || ''}</p>`;
                 return;
             }
-            if (resources.length === 0) {
+            if (!resources || resources.length === 0) {
                 resultsList.innerHTML = '<p>No resources found for this query.</p>';
                 return;
             }
 
             resultsList.innerHTML = ''; // Clear loading placeholder
 
-            resources.forEach(resource => {
+            resources.forEach((resource, index) => { // Added index
                 const tagClass = `${resource.type.toLowerCase()}-tag`;
-                // Use .get() for safety, provide defaults
                 const ratingCount = resource.ratingCount || 0;
                 const ratingSum = resource.ratingSum || 0;
                 const visits = resource.visits || 0;
-                
                 const rating = ratingCount > 0 ? (ratingSum / ratingCount).toFixed(1) : 'N/A';
                 const visitCount = visits > 1000 ? `${(visits / 1000).toFixed(1)}k` : visits;
                 
+                // Use the array index as a data-index to find the full data later
                 const cardHTML = `
-                    <div class="result-card" data-type="${resource.type}" data-id="${resource._id}">
+                    <div class="result-card" data-type="${resource.type}" data-index="${index}">
                         <button class="save-btn" title="Save resource">
                             <i class="fa-regular fa-bookmark"></i>
                         </button>
@@ -375,7 +294,6 @@ if (document.title.includes("Search Results")) {
                 resultsList.insertAdjacentHTML('beforeend', cardHTML);
             });
             
-            // 4. Apply filters *after* loading
             applyFilters(); 
 
         } catch (error) {
@@ -395,25 +313,35 @@ if (document.title.includes("Search Results")) {
             const saveButton = e.target.closest('.save-btn');
             
             if (saveButton) {
-                const card = saveButton.closest('.result-card');
-                const resourceId = card.dataset.id;
-                
                 if (!token) {
                     window.location.href = 'login.html'; // Redirect if not logged in
                     return;
                 }
                 
-                // Prevent saving non-DB items (like YouTube results) by ID
-                // This checks if the ID is a 24-char hex string (MongoDB ID)
-                if (resourceId.length !== 24 || !/^[0-9a-fA-F]+$/.test(resourceId)) {
-                    alert("This external resource cannot be saved to your profile (yet!)");
-                    return;
-                }
+                const card = saveButton.closest('.result-card');
+                const resultIndex = card.dataset.index;
+                const resourceData = currentResultsData[resultIndex]; // Get full data from our stored array
+
+                // This is the full object to send to the backend
+                const saveData = {
+                    id: resourceData._id,
+                    title: resourceData.title,
+                    description: resourceData.description,
+                    url: resourceData.url,
+                    type: resourceData.type,
+                    source: resourceData.source,
+                    category: resourceData.category,
+                    tags: resourceData.tags
+                };
 
                 try {
-                    const response = await fetch(`http://127.0.0.1:5000/api/save/${resourceId}`, {
+                    const response = await fetch(`http://127.0.0.1:5000/api/save`, {
                         method: 'POST',
-                        headers: { 'Authorization': `Bearer ${token}` }
+                        headers: { 
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(saveData)
                     });
 
                     const data = await response.json();
@@ -422,7 +350,7 @@ if (document.title.includes("Search Results")) {
                         saveButton.innerHTML = '<i class="fa-solid fa-bookmark"></i>';
                         saveButton.title = "Saved";
                     } else {
-                        alert(data.message); // Show error (e.g., "Cannot save external resource")
+                        alert(data.message); 
                     }
                 } catch (error) {
                     console.error("Error saving resource:", error);
@@ -446,7 +374,7 @@ if (document.title.includes("My Profile")) {
             return;
         }
         try {
-            const response = await fetch('http://127.0.0.1:5000/api/profile', {
+            const response = await fetch('[http://127.0.0.1:5000/api/profile](http://127.0.0.1:5000/api/profile)', {
                 method: 'GET',
                 headers: { 'Authorization': `Bearer ${token}` }
             });
@@ -467,7 +395,7 @@ if (document.title.includes("My Profile")) {
         const token = localStorage.getItem('eduVaultToken');
         if (!token) return; 
         try {
-            const response = await fetch('http://127.0.0.1:5000/api/saved-resources', {
+            const response = await fetch('[http://127.0.0.1:5000/api/saved-resources](http://127.0.0.1:5000/api/saved-resources)', {
                 method: 'GET',
                 headers: { 'Authorization': `Bearer ${token}` }
             });
@@ -490,7 +418,7 @@ if (document.title.includes("My Profile")) {
 
                     const cardHTML = `
                         <div class="result-card profile-result-card" data-id="${resource._id}">
-                            <img src="https://placehold.co/120x80/E0E0E0/333?text=${resource.type.charAt(0).toUpperCase()}" alt="Resource thumbnail" class="result-thumbnail">
+                            <img src="[https://placehold.co/120x80/E0E0E0/333?text=$](https://placehold.co/120x80/E0E0E0/333?text=$){resource.type.charAt(0).toUpperCase()}" alt="Resource thumbnail" class="result-thumbnail">
                             <div class="result-details">
                                 <span class="result-tag ${tagClass}">${resource.type}</span>
                                 <h3>${resource.title}</h3>
